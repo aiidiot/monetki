@@ -28,6 +28,7 @@
     <div id="month-label" class="month-label">…</div>
     <button id="next-month" class="nav-btn" title="Następny miesiąc">▶</button>
     <button id="today-btn" class="nav-btn nav-btn-today" title="Skocz do dziś">dziś</button>
+    <button id="copy-prev-btn" class="nav-btn nav-btn-copy" title="Skopiuj grafik z poprzedniego miesiąca, z zachowaniem dni tygodnia">📋 Kopiuj z poprzedniego</button>
     <div class="month-actions">
       <button id="export-btn" title="Pobierz wszystko jako JSON">⬇ JSON</button>
       <button id="import-btn" title="Wczytaj JSON">⬆ JSON</button>
@@ -58,12 +59,15 @@
 <section id="view-redakcja" class="view">
   <div class="redakcja-bar">
     <h2>Redakcja</h2>
+    <div class="redakcja-stats-label">Liczba dyżurów w miesiącu: <b id="redakcja-month-label">…</b></div>
     <button id="add-person-btn" class="primary">+ Dodaj osobę</button>
   </div>
   <div id="redakcja-list" class="redakcja-list"></div>
   <p class="hint">
     Role: <b>WP Finanse</b> i <b>Money</b> trafiają do kolumn obsadowych (i do OBECNI).
     <b>Wydawca</b> trafia do kolumny WYDAWANIE. Można zaznaczyć kilka ról jednej osobie.
+    Statystyki obok osoby: <b>łącznie</b> · WP·Poranek·Popo·Wydawanie w wybranym miesiącu.
+    Zmień miesiąc strzałkami w zakładce Grafik żeby zobaczyć inne liczby.
   </p>
 </section>
 

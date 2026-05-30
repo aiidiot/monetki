@@ -6,8 +6,22 @@
 const MONTHS_PL = ['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień'];
 const DOW_PL    = ['Nd','Pn','Wt','Śr','Cz','Pt','So'];
 
-const HOURS_WEEK = ['6-14','7-15','8-16','9-17','13-21','14-22','16-22'];
-const HOURS_WKND = ['7-15','8-16','9-17','13-21'];
+// Godziny rozdzielone na ranne (start ≤9) i popołudniowe (start ≥13).
+// WP FINANSE = wszystkie (różne zmiany w jednej kolumnie). Poranek = AM, Popo = PM.
+// Weekend ma okrojoną listę.
+const HOURS_AM_WEEK  = ['6-14','7-15','8-16','9-17'];
+const HOURS_PM_WEEK  = ['13-21','14-22','16-22'];
+const HOURS_ALL_WEEK = [...HOURS_AM_WEEK, ...HOURS_PM_WEEK];
+
+const HOURS_AM_WKND  = ['7-15','8-16','9-17'];
+const HOURS_PM_WKND  = ['13-21','14-22'];
+const HOURS_ALL_WKND = [...HOURS_AM_WKND, ...HOURS_PM_WKND];
+
+function hoursPreset(part, isWeekend) {
+  if (part === 'am') return isWeekend ? HOURS_AM_WKND  : HOURS_AM_WEEK;
+  if (part === 'pm') return isWeekend ? HOURS_PM_WKND  : HOURS_PM_WEEK;
+  return                isWeekend ? HOURS_ALL_WKND : HOURS_ALL_WEEK;
+}
 
 const FIXED_HOLIDAYS = [[1,1],[1,6],[5,1],[5,3],[8,15],[11,1],[11,11],[12,25],[12,26]];
 
@@ -17,16 +31,20 @@ const ROLES = {
   wydawca:    'Wydawca',
 };
 
-// Definicja kolumn grafiku
+// Definicja kolumn grafiku.
+// hoursPart: 'am' | 'pm' | 'all' — który preset godzin pokazać w dropdownie.
 const COLUMNS = [
-  { key: 'wp_finanse', label: 'WP FINANSE',  bg: 'wp',        kind: 'shifts', preferRole: 'wp_finanse', maxSlots: 4 },
-  { key: 'poranek',    label: 'Poranek 6-14',bg: 'am',        kind: 'shifts', preferRole: 'money',      maxSlots: 4 },
-  { key: 'popo',       label: 'Popo 14-22',  bg: 'pm',        kind: 'shifts', preferRole: 'money',      maxSlots: 4 },
-  { key: 'obecni',     label: 'OBECNI',      bg: 'obecni',    kind: 'people', preferRoles: ['wp_finanse','money'], maxSlots: 20 },
+  { key: 'wp_finanse', label: 'WP FINANSE',  bg: 'wp',        kind: 'shifts',    preferRole: 'wp_finanse', maxSlots: 4, hoursPart: 'all' },
+  { key: 'poranek',    label: 'Poranek 6-14',bg: 'am',        kind: 'shifts',    preferRole: 'money',      maxSlots: 4, hoursPart: 'am' },
+  { key: 'popo',       label: 'Popo 14-22',  bg: 'pm',        kind: 'shifts',    preferRole: 'money',      maxSlots: 4, hoursPart: 'pm' },
+  { key: 'obecni',     label: 'OBECNI',      bg: 'obecni',    kind: 'people',    preferRoles: ['wp_finanse','money'], maxSlots: 20 },
   { key: 'wydawanie',  label: 'WYDAWANIE',   bg: 'wydawanie', kind: 'wydawanie', preferRole: 'wydawca' },
-  { key: 'odbiory',    label: 'Odbiory',     bg: 'odbiory',   kind: 'people', maxSlots: 6 },
-  { key: 'urlopy',     label: 'Urlopy',      bg: 'urlopy',    kind: 'people', maxSlots: 8 },
+  { key: 'odbiory',    label: 'Odbiory',     bg: 'odbiory',   kind: 'people',    maxSlots: 6 },
+  { key: 'urlopy',     label: 'Urlopy',      bg: 'urlopy',    kind: 'people',    maxSlots: 8 },
 ];
+
+// Pomocniczo: które kolumny "liczą się" jako dyżur (do detekcji duplikatów + statystyk).
+const SHIFT_COLS = ['wp_finanse','poranek','popo','wydawanie'];
 
 // ============ Stan ============
 const state = {
@@ -143,9 +161,84 @@ function setStatus(kind, label) {
   const el = $('#status'); el.className = 'status status-'+kind; el.textContent = label;
 }
 
+// ============ Wykrywanie duplikatów + statystyki ============
+
+// Zwraca Set nazwisk które TEGO DNIA występują w więcej niż jednej kolumnie obsadowej.
+// Liczą się: wp_finanse, poranek, popo, wydawanie (każda jako jedno wystąpienie per osoba per kolumna).
+function dayDuplicates(cell) {
+  if (!cell) return new Set();
+  const counts = {};
+  const bump = name => { if (name) counts[name] = (counts[name]||0) + 1; };
+  (cell.wp_finanse || []).forEach(s => bump(s.name));
+  (cell.poranek    || []).forEach(s => bump(s.name));
+  (cell.popo       || []).forEach(s => bump(s.name));
+  const w = cell.wydawanie;
+  if (w) { if (w.rano)  bump(w.rano.name); if (w.popol) bump(w.popol.name); }
+  const dups = new Set();
+  Object.entries(counts).forEach(([n,c]) => { if (c > 1) dups.add(n); });
+  return dups;
+}
+
+// Liczy dyżury wszystkich osób w danym miesiącu.
+// Zwraca { 'Master': {wp_finanse: 5, poranek: 0, popo: 0, wydawanie: 0, total: 5}, ... }
+function shiftCountsForMonth(year, monthIdx) {
+  const counts = {};
+  const dim = daysInMonth(year, monthIdx);
+  for (let d=1; d<=dim; d++) {
+    const cell = state.grafik[dateKey(year, monthIdx, d)];
+    if (!cell) continue;
+    const add = (name, col) => {
+      if (!name) return;
+      if (!counts[name]) counts[name] = { wp_finanse:0, poranek:0, popo:0, wydawanie:0, total:0 };
+      counts[name][col]++; counts[name].total++;
+    };
+    (cell.wp_finanse || []).forEach(s => add(s.name, 'wp_finanse'));
+    (cell.poranek    || []).forEach(s => add(s.name, 'poranek'));
+    (cell.popo       || []).forEach(s => add(s.name, 'popo'));
+    if (cell.wydawanie?.rano)  add(cell.wydawanie.rano.name,  'wydawanie');
+    if (cell.wydawanie?.popol) add(cell.wydawanie.popol.name, 'wydawanie');
+  }
+  return counts;
+}
+
+// ============ Kopiowanie miesiąca (uwzględnia dni tygodnia) ============
+
+// Mapowanie source month → target month po (dow, nth-of-dow), żeby Pn padał na Pn,
+// 1-szy Pn źródła → 1-szy Pn celu, 2-gi → 2-gi itd. Sobotnio-niedzielne godziny
+// nie wycieką na dni robocze (zachowujemy strukturę tygodnia).
+function copyMonthSchedule(srcYear, srcMonthIdx, dstYear, dstMonthIdx) {
+  // Zbuduj indeks źródła: { dow_nth: cellCopy }, np. "1_2" = drugi Pn źródła
+  const srcIdx = {};
+  const srcDim = daysInMonth(srcYear, srcMonthIdx);
+  const dowCount = {};
+  for (let d=1; d<=srcDim; d++) {
+    const dow = new Date(srcYear, srcMonthIdx, d).getDay();
+    dowCount[dow] = (dowCount[dow]||0) + 1;
+    const cell = state.grafik[dateKey(srcYear, srcMonthIdx, d)];
+    if (cell) srcIdx[`${dow}_${dowCount[dow]}`] = JSON.parse(JSON.stringify(cell));
+  }
+  // Dla każdego dnia celu znajdź odpowiednik źródła
+  const dstDim = daysInMonth(dstYear, dstMonthIdx);
+  const dstDow = {};
+  let copied = 0, skipped = 0;
+  for (let d=1; d<=dstDim; d++) {
+    const dow = new Date(dstYear, dstMonthIdx, d).getDay();
+    dstDow[dow] = (dstDow[dow]||0) + 1;
+    const src = srcIdx[`${dow}_${dstDow[dow]}`];
+    const key = dateKey(dstYear, dstMonthIdx, d);
+    if (src) { state.grafik[key] = src; copied++; }
+    else      { delete state.grafik[key]; skipped++; }
+  }
+  return { copied, skipped };
+}
+
 // ============ Render: Grafik ============
 function renderMonthLabel() {
   $('#month-label').textContent = `${MONTHS_PL[state.monthIdx]} ${state.year}`;
+  let srcY = state.year, srcM = state.monthIdx - 1;
+  if (srcM < 0) { srcM = 11; srcY--; }
+  const btn = $('#copy-prev-btn');
+  if (btn) btn.textContent = `📋 Kopiuj z ${MONTHS_PL[srcM]}`;
 }
 
 function getPeopleSorted(preferRole, preferRoles) {
@@ -163,20 +256,22 @@ function getPeopleSorted(preferRole, preferRoles) {
   return tagged;
 }
 
-function renderShiftPills(slots) {
+function pillClass(name, dups) { return dups && dups.has(name) ? 'pill pill-dup' : 'pill'; }
+
+function renderShiftPills(slots, dups) {
   if (!slots || !slots.length) return '<div class="cell-empty">—</div>';
-  return slots.map(s => `<span class="pill"><span class="hrs">${s.hours||''}</span>${s.hours?'<span class="sep">·</span>':''}${escapeHtml(s.name)}</span>`).join('');
+  return slots.map(s => `<span class="${pillClass(s.name, dups)}" title="${dups?.has(s.name)?'⚠ dubel dnia':''}">${s.hours?`<span class="hrs">${s.hours}</span><span class="sep">·</span>`:''}${escapeHtml(s.name)}</span>`).join('');
 }
 function renderPeoplePills(people) {
   if (!people || !people.length) return '<div class="cell-empty">—</div>';
-  return people.map(n => `<span class="pill">${escapeHtml(n)}</span>`).join('');
+  return people.map(n => `<span class="pill pill-person">${escapeHtml(n)}</span>`).join('');
 }
-function renderWydawaniePills(wyd) {
+function renderWydawaniePills(wyd, dups) {
   if (!wyd || (!wyd.rano && !wyd.popol)) return '<div class="cell-empty">—</div>';
-  const parts = [];
-  if (wyd.rano) parts.push(`<span class="pill"><span class="label">Rano</span><span class="hrs">${wyd.rano.hours||''}</span>${wyd.rano.hours?'<span class="sep">·</span>':''}${escapeHtml(wyd.rano.name)}</span>`);
-  if (wyd.popol) parts.push(`<span class="pill"><span class="label">Popoł</span><span class="hrs">${wyd.popol.hours||''}</span>${wyd.popol.hours?'<span class="sep">·</span>':''}${escapeHtml(wyd.popol.name)}</span>`);
-  return parts.join('');
+  const row = (lab, slot) => slot
+    ? `<div class="wyd-row"><span class="label">${lab}</span><span class="${pillClass(slot.name, dups)}" title="${dups?.has(slot.name)?'⚠ dubel dnia':''}">${slot.hours?`<span class="hrs">${slot.hours}</span><span class="sep">·</span>`:''}${escapeHtml(slot.name)}</span></div>`
+    : `<div class="wyd-row wyd-empty"><span class="label">${lab}</span><span class="cell-empty">—</span></div>`;
+  return row('Rano', wyd.rano) + row('Popoł', wyd.popol);
 }
 
 function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
@@ -206,6 +301,7 @@ function renderGrafik() {
     tr.appendChild(tdDay);
 
     const cell = state.grafik[key] || {};
+    const dups = dayDuplicates(cell);
     COLUMNS.forEach(col => {
       const td = document.createElement('td');
       td.className = 'cell col-c-'+col.bg;
@@ -213,9 +309,9 @@ function renderGrafik() {
       td.dataset.col = col.key;
       const val = cell[col.key];
       let html;
-      if (col.kind === 'shifts')       html = renderShiftPills(val);
-      else if (col.kind === 'people')  html = renderPeoplePills(val);
-      else if (col.kind === 'wydawanie') html = renderWydawaniePills(val);
+      if (col.kind === 'shifts')         html = renderShiftPills(val, dups);
+      else if (col.kind === 'people')    html = renderPeoplePills(val);
+      else if (col.kind === 'wydawanie') html = renderWydawaniePills(val, dups);
       td.innerHTML = html;
       tr.appendChild(td);
     });
@@ -231,25 +327,25 @@ function openCellEditor(dateKey, colKey) {
   const cell = state.grafik[dateKey] || {};
   const current = cell[colKey];
 
-  // Konstruuj slots na podstawie typu
+  // Day of week (do wyboru presetu godzin)
+  const [y,mm,dd] = dateKey.split('-').map(Number);
+  const dow = new Date(y, mm-1, dd).getDay();
+  const wknd = isWeekendDay(dow);
+
+  // Konstruuj slots — każdy slot trzyma własny hoursPart (am/pm/all)
   let slots;
   if (colDef.kind === 'shifts') {
-    slots = (current || []).map(s => ({...s}));
+    slots = (current || []).map(s => ({ ...s, hoursPart: colDef.hoursPart || 'all' }));
   } else if (colDef.kind === 'people') {
     slots = (current || []).map(name => ({ name, hours: null }));
   } else if (colDef.kind === 'wydawanie') {
     slots = [
-      { label: 'Rano',   name: current?.rano?.name  || '', hours: current?.rano?.hours  || '' },
-      { label: 'Popoł',  name: current?.popol?.name || '', hours: current?.popol?.hours || '' },
+      { label: 'Rano',   name: current?.rano?.name  || '', hours: current?.rano?.hours  || '', hoursPart: 'am' },
+      { label: 'Popoł',  name: current?.popol?.name || '', hours: current?.popol?.hours || '', hoursPart: 'pm' },
     ];
   }
 
-  // Day of week dla presetu godzin
-  const [y,mm,dd] = dateKey.split('-').map(Number);
-  const dow = new Date(y, mm-1, dd).getDay();
-  const hoursPreset = isWeekendDay(dow) ? HOURS_WKND : HOURS_WEEK;
-
-  dialogContext = { dateKey, colKey, colDef, slots, hoursPreset, fixedSlots: colDef.kind === 'wydawanie' };
+  dialogContext = { dateKey, colKey, colDef, slots, isWeekend: wknd, fixedSlots: colDef.kind === 'wydawanie' };
 
   $('#cell-dialog-title').textContent = `${colDef.label} — ${formatDateLabel(dateKey)}`;
   renderSlots();
@@ -265,7 +361,7 @@ function formatDateLabel(key) {
 
 function renderSlots() {
   const wrap = $('#cell-slots'); wrap.innerHTML = '';
-  const { slots, colDef, hoursPreset, fixedSlots } = dialogContext;
+  const { slots, colDef, isWeekend, fixedSlots } = dialogContext;
   const people = getPeopleSorted(colDef.preferRole, colDef.preferRoles);
 
   slots.forEach((slot, idx) => {
@@ -290,12 +386,12 @@ function renderSlots() {
     }
     html += `<select class="slot-person" data-idx="${idx}">${optsPeople}</select>`;
 
-    // Hours select (jeśli kolumna typu shifts/wydawanie)
+    // Hours select — preset zależy od typu slotu (am/pm/all) i dnia tygodnia
     if (colDef.kind === 'shifts' || colDef.kind === 'wydawanie') {
+      const preset = hoursPreset(slot.hoursPart || colDef.hoursPart || 'all', isWeekend);
       let optsHrs = '<option value="">—</option>';
-      hoursPreset.forEach(h => { optsHrs += `<option value="${h}" ${h===slot.hours?'selected':''}>${h}</option>`; });
-      // jeśli aktualne godziny nie pasują do presetu, dodaj jako custom
-      if (slot.hours && !hoursPreset.includes(slot.hours)) {
+      preset.forEach(h => { optsHrs += `<option value="${h}" ${h===slot.hours?'selected':''}>${h}</option>`; });
+      if (slot.hours && !preset.includes(slot.hours)) {
         optsHrs += `<option value="${escapeHtml(slot.hours)}" selected>${escapeHtml(slot.hours)} (niestand.)</option>`;
       }
       html += `<select class="slot-hrs" data-idx="${idx}">${optsHrs}</select>`;
@@ -371,9 +467,14 @@ document.addEventListener('click', e => {
 // ============ Render: Redakcja ============
 function renderRedakcja() {
   const list = $('#redakcja-list'); list.innerHTML = '';
+  // Licznik dyżurów w bieżącym miesiącu (do statystyk obok osoby)
+  const counts = shiftCountsForMonth(state.year, state.monthIdx);
+  $('#redakcja-month-label').textContent = `${MONTHS_PL[state.monthIdx]} ${state.year}`;
+
   const sorted = [...state.redakcja].sort((a,b) => a.name.localeCompare(b.name, 'pl'));
-  sorted.forEach((p, sortedIdx) => {
-    const realIdx = state.redakcja.indexOf(p); // żeby update trafił w dobry element
+  sorted.forEach((p) => {
+    const realIdx = state.redakcja.indexOf(p);
+    const c = counts[p.name] || { wp_finanse:0, poranek:0, popo:0, wydawanie:0, total:0 };
     const row = document.createElement('div');
     row.className = 'person-row';
     row.innerHTML = `
@@ -382,6 +483,10 @@ function renderRedakcja() {
         ${Object.keys(ROLES).map(r => `
           <span class="role-chip ${p.roles?.includes(r)?'active':''}" data-idx="${realIdx}" data-role="${r}">${ROLES[r]}</span>
         `).join('')}
+      </div>
+      <div class="person-stats" title="Dyżury w bieżącym miesiącu: WP / Poranek / Popo / Wydawanie">
+        <span class="stat stat-total">${c.total}</span>
+        <span class="stat-detail">${c.wp_finanse}·${c.poranek}·${c.popo}·${c.wydawanie}</span>
       </div>
       <button class="person-delete" data-idx="${realIdx}" title="Usuń">×</button>
     `;
@@ -439,17 +544,40 @@ $('#prev-month').onclick = () => {
   state.monthIdx--;
   if (state.monthIdx < 0) { state.monthIdx = 11; state.year--; }
   renderGrafik();
+  if (state.view === 'redakcja') renderRedakcja();
 };
 $('#next-month').onclick = () => {
   state.monthIdx++;
   if (state.monthIdx > 11) { state.monthIdx = 0; state.year++; }
   renderGrafik();
+  if (state.view === 'redakcja') renderRedakcja();
 };
 $('#today-btn').onclick = () => {
   const now = new Date();
   state.year = now.getFullYear(); state.monthIdx = now.getMonth();
   renderGrafik();
 };
+
+// Kopiuj z poprzedniego miesiąca (z poszanowaniem dni tygodnia)
+$('#copy-prev-btn').onclick = () => {
+  let srcY = state.year, srcM = state.monthIdx - 1;
+  if (srcM < 0) { srcM = 11; srcY--; }
+  const srcLabel = `${MONTHS_PL[srcM]} ${srcY}`;
+  const dstLabel = `${MONTHS_PL[state.monthIdx]} ${state.year}`;
+  if (!confirm(`Skopiować grafik z ${srcLabel} do ${dstLabel}?\n\nDni tygodnia są zachowane (Pn→Pn, So→So itd.), więc weekendowe godziny nie wycieką na dni robocze. UWAGA: nadpisze wszystko co masz w ${dstLabel}.`)) return;
+  const { copied, skipped } = copyMonthSchedule(srcY, srcM, state.year, state.monthIdx);
+  saveLocal(); pushFirebase('grafik', state.grafik);
+  renderGrafik();
+  alert(`Skopiowano: ${copied} dni · puste: ${skipped} dni`);
+};
+
+// Aktualizuj label przycisku przy każdym renderze miesiąca
+function updateCopyPrevLabel() {
+  let srcY = state.year, srcM = state.monthIdx - 1;
+  if (srcM < 0) { srcM = 11; srcY--; }
+  const btn = $('#copy-prev-btn');
+  if (btn) btn.textContent = `📋 Kopiuj z ${MONTHS_PL[srcM]}`;
+}
 
 // ============ Import / Export ============
 $('#export-btn').onclick = () => {
