@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grafik redakcji — Monetki</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='52' font-size='52'%3E📅%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="brand">📅 Grafik redakcji</div>
+  <div class="controls">
+    <label>Rok:
+      <input type="number" id="year-input" min="2020" max="2099" value="2021">
+    </label>
+    <select id="month-select"></select>
+    <span id="status" class="status status-offline">offline</span>
+    <button id="export-btn" title="Pobierz cały grafik jako JSON">⬇ JSON</button>
+    <button id="import-btn" title="Wczytaj JSON i nadpisz dane">⬆ JSON</button>
+    <input type="file" id="import-file" accept=".json" hidden>
+    <button id="settings-btn" title="Konfiguracja Firebase">⚙</button>
+  </div>
+</header>
+
+<main>
+  <div id="grid-wrap">
+    <table id="grid">
+      <thead>
+        <tr>
+          <th class="col-day">Dzień</th>
+          <th>WP FINANSE</th>
+          <th>Poranek 6-14</th>
+          <th>Popo 14-22</th>
+          <th>Odbiory</th>
+          <th>Urlopy</th>
+        </tr>
+      </thead>
+      <tbody id="grid-body"></tbody>
+    </table>
+  </div>
+</main>
+
+<dialog id="settings-dialog">
+  <form method="dialog">
+    <h2>Konfiguracja Firebase</h2>
+    <p class="hint">
+      Aby grafik był współdzielony na żywo między ludźmi, wklej config swojego projektu Firebase Realtime DB
+      (Firebase Console → Project Settings → Web App config). Bez tego dane lecą tylko do localStorage tej przeglądarki.
+    </p>
+    <label>databaseURL:
+      <input type="url" id="fb-url" placeholder="https://twoj-projekt-default-rtdb.europe-west1.firebasedatabase.app">
+    </label>
+    <label>apiKey:
+      <input type="text" id="fb-apikey" placeholder="AIzaSy...">
+    </label>
+    <label>projectId:
+      <input type="text" id="fb-projectid" placeholder="twoj-projekt">
+    </label>
+    <div class="actions">
+      <button value="cancel">Anuluj</button>
+      <button value="save" id="fb-save" class="primary">Zapisz i połącz</button>
+    </div>
+  </form>
+</dialog>
+
+<footer>
+  <span id="footer-hint">
+    Edytuj komórkę klikając w nią. Zmiany zapisują się automatycznie.
+    <a href="#" id="show-readme">Jak to działa?</a>
+  </span>
+</footer>
+
+<dialog id="readme-dialog">
+  <form method="dialog">
+    <h2>Jak to działa</h2>
+    <ul>
+      <li><b>Edycja:</b> kliknij w dowolną komórkę, wpisz tekst, Tab/Enter zatwierdza.</li>
+      <li><b>Współdzielenie:</b> jeśli skonfigurowany jest Firebase (⚙), każda zmiana wszystkich widzą na żywo (1-2s).</li>
+      <li><b>Bez Firebase:</b> dane trzymają się w localStorage Twojej przeglądarki. Eksport/import JSON żeby się podzielić.</li>
+      <li><b>Weekendy</b> i święta polskie podświetlone na żółto (na podstawie roku z górnego pola).</li>
+      <li><b>Reset:</b> ⬆ JSON → wybierz <code>data-initial.json</code> z repo żeby cofnąć do stanu wyjściowego.</li>
+    </ul>
+    <div class="actions">
+      <button value="ok" class="primary">OK</button>
+    </div>
+  </form>
+</dialog>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

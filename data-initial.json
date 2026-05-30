@@ -1,0 +1,2005 @@
+{
+  "year": 2021,
+  "months": [
+    {
+      "name": "Maj",
+      "days": [
+        {
+          "day": 1,
+          "wp_finanse": "8-16 Master",
+          "poranek": "7-15 Gadawa / 13-21 M.Walków",
+          "popo": "9-17 Żugier",
+          "odbiory": "",
+          "urlopy": "Kalus, Sieńko"
+        },
+        {
+          "day": 2,
+          "wp_finanse": "8-16 Krawiel",
+          "poranek": "7-15 Gadawa / 13-21 Sąsiada",
+          "popo": "9-17 Bera",
+          "odbiory": "",
+          "urlopy": "Kalus, Sieńko"
+        },
+        {
+          "day": 3,
+          "wp_finanse": "8-16 Krawiel",
+          "poranek": "7-15 Bera/ 13-21 M.Walków",
+          "popo": "9-17 Chudy",
+          "odbiory": "",
+          "urlopy": "Kalus, Sieńko"
+        },
+        {
+          "day": 4,
+          "wp_finanse": "6-14 Krawiel/ 7-15 Sieńko/ 13-21 Glinka",
+          "poranek": "6-14 Kalus/Gadawa/Ciszak 9-17 Żugier",
+          "popo": "14-22 Losik / Bera / Walków",
+          "odbiory": "Chudy za 3.05, Master za 01.05, Rakosza za 09.05 / Sąsiada za 02.05",
+          "urlopy": ""
+        },
+        {
+          "day": 5,
+          "wp_finanse": "6-14 Krawiel/ 7-15 Glinka, Sieńko/ 13-21 Master",
+          "poranek": "6-14 Kalus/Ciszak/Gadawa, 9-17 Chudy",
+          "popo": "14-22 Żugier / Walków",
+          "odbiory": "Rakosza za 10.05",
+          "urlopy": "Sąsiada"
+        },
+        {
+          "day": 6,
+          "wp_finanse": "6-14 Glinka, Sieńko/ 7-15 Rakosza, Krawiel/ 13-21 Master",
+          "poranek": "6-14 Kalus/Bera/Gadawa 9-17 Żugier",
+          "popo": "14-22 Chudy / Sąsiada",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 7,
+          "wp_finanse": "6-14 Glinka, Sieńko/ 7-15 Rakosza, Krawiel/ 13-21 Master",
+          "poranek": "6-14 Kalus/Bera/Gadawa 9-17 Chudy",
+          "popo": "14-22 Sąsiada / Losik",
+          "odbiory": "Żugier za 1.05",
+          "urlopy": ""
+        },
+        {
+          "day": 8,
+          "wp_finanse": "6-14 Krawiel/ 7-15 Rakosza, Sieńko/ 13-21 Master.",
+          "poranek": "6-14 Kalus / Gadawa/Ciszak",
+          "popo": "14-22 Sąsiada / Losik",
+          "odbiory": "Bera za 3.05 Żugier za 10.05",
+          "urlopy": "Glinka"
+        },
+        {
+          "day": 9,
+          "wp_finanse": "8-16 Rakosza",
+          "poranek": "7-15 Kędzierski / 13-21 Chudy",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Glinka"
+        },
+        {
+          "day": 10,
+          "wp_finanse": "8-16 Rakosza",
+          "poranek": "7-15 Żugier/13-21 Bellon",
+          "popo": "9-17 Chudy",
+          "odbiory": "",
+          "urlopy": "Glinka"
+        },
+        {
+          "day": 11,
+          "wp_finanse": "6-14 Master/ 7-15 Rakosza, Krawiel/ 13-21 Sieńko",
+          "poranek": "6-14 Kalus/ Gadawa/Ciszak, 9-17 Chudy",
+          "popo": "14-22 Walków/ Żugier",
+          "odbiory": "Bera za 2.05, Losik za 16.05",
+          "urlopy": "Glinka / Sąsiada"
+        },
+        {
+          "day": 12,
+          "wp_finanse": "6-14 Glinka, Krawiel/ 7-15 Rakosza, Sieńko/ 13-21 Master",
+          "poranek": "6-14 Kalus/Gadawa/Ciszak 9-17 Żugier",
+          "popo": "14-22 Walków / Losik",
+          "odbiory": "Chudy za 9.05, Bera za 12.04",
+          "urlopy": "Sąsiada/Setta"
+        },
+        {
+          "day": 13,
+          "wp_finanse": "6-14 Glinka, Krawiel/ 7-15 Rakosza, Sieńko/ 13-21 Master",
+          "poranek": "6-14 Kalus/Żugier/Ciszak",
+          "popo": "14-22 Chudy / Sąsiada",
+          "odbiory": "",
+          "urlopy": "Bera"
+        },
+        {
+          "day": 14,
+          "wp_finanse": "6-14 Krawiel/ 7-10 Rakosza, 7-15 Glinka/ 13-21 Master",
+          "poranek": "6-14 Kalus /Ciszak/ 9-17 Sąsiada",
+          "popo": "14-22 Losik (16-22, 2 godz. dla rodziny)/ Bera",
+          "odbiory": "Chudy za 10.05, Żugier za 16.05, Sieńko za 16.05, Rakosza 2 h dla rodziny",
+          "urlopy": ""
+        },
+        {
+          "day": 15,
+          "wp_finanse": "6-14 Krawiel/ 7-13 Glinka/ 13-21 Master",
+          "poranek": "6-14 Kalus (do 12)/ Bera/Gadawa",
+          "popo": "14-22 Losik / Sąsiada",
+          "odbiory": "Żugier za 17.05, M.Walków za 6.04.., Sieńko za 17.05, Glinka 2 h dla rodziny",
+          "urlopy": "Ciszak"
+        },
+        {
+          "day": 16,
+          "wp_finanse": "8-16 Sieńko",
+          "poranek": "7-15 Żugier 13-21 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Ciszak/Wysota"
+        },
+        {
+          "day": 17,
+          "wp_finanse": "8-16 Sieńko",
+          "poranek": "7-15 Żugier 13-21 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Ciszak/Wysota"
+        },
+        {
+          "day": 18,
+          "wp_finanse": "6-14 Sieńko, Master/ 7-15 Rakosza, Glinka/ 13-19 Krawiel",
+          "poranek": "6-14 Ciszak/Żugier/Gadawa, 9-17 Chudy",
+          "popo": "14-22 Bera / Sąsiada",
+          "odbiory": "M.Walków za 01.05., Losik za 17.05, Krawiel 2 h dla rodziny",
+          "urlopy": "Kalus/Wysota"
+        },
+        {
+          "day": 19,
+          "wp_finanse": "6-14 Sieńko, Master/ 7-15 Rakosza, Glinka/ 13-21 Krawiel",
+          "poranek": "6-14 Kalus/Ciszak/Żugier/Gadawa / 9-17 Sąsiada",
+          "popo": "14-22  Chudy / Losik / Walków 16-22",
+          "odbiory": "M.Walków 2h dla rodziny",
+          "urlopy": "Wysota"
+        },
+        {
+          "day": 20,
+          "wp_finanse": "6-14 Sieńko, Master/ 7-15 Rakosza, Glinka/ 13-21 Krawiel",
+          "poranek": "6-14 Kalus/Żugier/Chudy 9-17 Bera",
+          "popo": "14-22 Losik / Sąsiada",
+          "odbiory": "",
+          "urlopy": "Wysota"
+        },
+        {
+          "day": 21,
+          "wp_finanse": "6-14 Master/ 7-15 Rakosza, Krawiel/ 13-21 Sieńko",
+          "poranek": "6-14 Kalus/Ciszak/Żugier/Gadawa",
+          "popo": "14-22 Sąsiada / Walków",
+          "odbiory": "Glinka za 23.05, Chudy za 23.05",
+          "urlopy": "Wysota,"
+        },
+        {
+          "day": 22,
+          "wp_finanse": "6-14 Master/ 7-15 Rakosza, Krawiel/ 15-21 Sieńko",
+          "poranek": "6-14 Kalus/Żugier/Gadawa(do12)",
+          "popo": "14-22 Sąsiada / Chudy",
+          "odbiory": "Glinka za 24.05, M.Walków za 3.05, Sieńko 2 h dla rodziny, Gadawa 2 h dla rodziny",
+          "urlopy": "Wysota Bera"
+        },
+        {
+          "day": 23,
+          "wp_finanse": "8-16 Glinka",
+          "poranek": "7-15 Kalus / 13-21 Kędzierski",
+          "popo": "9-17 Chudy (Żugier Gdańsk)",
+          "odbiory": "",
+          "urlopy": "Wysota"
+        },
+        {
+          "day": 24,
+          "wp_finanse": "8-16 Glinka",
+          "poranek": "7-15 Kalus / 13-21 Kędzierski",
+          "popo": "9-17 Chudy",
+          "odbiory": "",
+          "urlopy": "Wysota"
+        },
+        {
+          "day": 25,
+          "wp_finanse": "6-14 Master, Sieńko/ 7-15 Rakosza, Glinka/ 13-21 Krawiel",
+          "poranek": "6-14 Kalus/Ciszak/Żugier/Gadawa",
+          "popo": "14-22 Losik / Bera / Sąsiada",
+          "odbiory": "Chudy za 24.05",
+          "urlopy": "M.Walków/Wysota"
+        },
+        {
+          "day": 26,
+          "wp_finanse": "6-14 Glinka, Sieńko/ 7-15 Rakosza, Master/ 13-21 Krawiel",
+          "poranek": "6-14 Kalus/Ciszak/Żugier",
+          "popo": "14-22  Sąsiada / Losik, Chudy (15)",
+          "odbiory": "",
+          "urlopy": "M.Walków/Wysota,Bera"
+        },
+        {
+          "day": 27,
+          "wp_finanse": "6-14 Glinka, Sieńko/ 7-15 Rakosza, Krawiel/ 13-21 Master",
+          "poranek": "6-14 Kalus/Żugier/Gadawa, 9-17 Chudy",
+          "popo": "14-22 Sąsiada / Bera",
+          "odbiory": "",
+          "urlopy": "M.Walków/Wysota"
+        },
+        {
+          "day": 28,
+          "wp_finanse": "6-14 Krawiel/ 7-15 Rakosza, Sieńko/ 13-21 Glinka",
+          "poranek": "6-14 Kalus/Żugier/Gadawa, 9-17 Bera",
+          "popo": "14-22 Chudy (od 13) / Sąsiada",
+          "odbiory": "Master za 30.05, Bellon za 10.05, Bera 2 h dla rodziny",
+          "urlopy": "M.Walków/Wysota"
+        },
+        {
+          "day": 29,
+          "wp_finanse": "6-14 Krawiel/ 7-15 Rakosza, Sieńko/ 13-21 Glinka",
+          "poranek": "6-14 Losik/Ciszak/Żugier/Gadawa",
+          "popo": "14-22 Sąsiada / Chudy",
+          "odbiory": "Kalus wolne za 23, Master za 31.05",
+          "urlopy": "M.Walków/Wysota,Bera"
+        },
+        {
+          "day": 30,
+          "wp_finanse": "8-16 Master",
+          "poranek": "6-14 Ciszak / 13-21 Sąsiada",
+          "popo": "9-17 Żugier",
+          "odbiory": "",
+          "urlopy": "M.Walków, Kalus/Wysota"
+        },
+        {
+          "day": 31,
+          "wp_finanse": "8-16 Master",
+          "poranek": "6-14 Gospodarczyk / 13-21 Sąsiada",
+          "popo": "9-17 Ciszak (odbieram 2h)",
+          "odbiory": "",
+          "urlopy": "M.Walków, Kalus/Wysota"
+        }
+      ]
+    },
+    {
+      "name": "Czerwiec",
+      "days": [
+        {
+          "day": 1,
+          "wp_finanse": "6-14 Sieńko, Glinka/7-15 Master/13-21 Krawiel",
+          "poranek": "6-14 Ciszak/ Żugier/Gadawa 9-17 Chudy",
+          "popo": "14-22 Bera / M.Walków",
+          "odbiory": "Kalus wolne za 24 / Sąsiada za 30.05 / Gospodarczyk za 31.05, Losik za 28.06",
+          "urlopy": "Kalus/Wysota"
+        },
+        {
+          "day": 2,
+          "wp_finanse": "6-14 Glinka/7-15 Master/Krawiel 13-21 Sieńko",
+          "poranek": "6-14 Ciszak/Gadawa",
+          "popo": "14-22 Chudy / Losik",
+          "odbiory": "Sąsiada za 31.05, Żugier za 23.05",
+          "urlopy": "Kalus/Wysota"
+        },
+        {
+          "day": 3,
+          "wp_finanse": "6-14 Glinka/ Kraiwel - urlop 13-21 Sieńko",
+          "poranek": "6-14 Żugier/Gadawa/Bera 9-17 Chudy",
+          "popo": "14-22 Walków / Losik",
+          "odbiory": "Sąsiada za 06.06",
+          "urlopy": "Kalus/Wysota/krawiel"
+        },
+        {
+          "day": 4,
+          "wp_finanse": "8-16 Sieńko",
+          "poranek": "6-14 Ciszak/Gadawa",
+          "popo": "14-22 Chudy",
+          "odbiory": "",
+          "urlopy": "Kalus/Wysota/krawiel"
+        },
+        {
+          "day": 5,
+          "wp_finanse": "6-14 Glinka, Sieńko - odbiór za 4.06, Krawiel - urlop",
+          "poranek": "6-14 Losik/Gadawa/Bera",
+          "popo": "14-22 Sąsiada",
+          "odbiory": "Chudy, za 4.06, Ciszak za 4.06, Żugier za 13.06.",
+          "urlopy": "Kalus, Bellon/krawiel"
+        },
+        {
+          "day": 6,
+          "wp_finanse": "Master- prośba o 6-14",
+          "poranek": "7-15 Gadawa/13-21 Sąsiada",
+          "popo": "9-17 Paulina",
+          "odbiory": "",
+          "urlopy": "Losik, Bellon/krawiel"
+        },
+        {
+          "day": 7,
+          "wp_finanse": "Master 8-16 Sieńko -Tajlandia, Glinka - proszę nie,",
+          "poranek": "7-15 Gadawa/13-21 Sąsiada",
+          "popo": "9-17 Bera",
+          "odbiory": "",
+          "urlopy": "Losik, Bellon/krawiel"
+        },
+        {
+          "day": 8,
+          "wp_finanse": "Sieńko -Tajlandia, Krawiel - urlop, 6-14 Glinka/10-18 Master",
+          "poranek": "6-14 Kalus/ Ciszak",
+          "popo": "14-22 Gadawa (13-21)  / Chudy",
+          "odbiory": "Bera za 7.06, Żugier za 30.05 / Sąsiada za 07.06",
+          "urlopy": "Losik, Bellon/krawiel"
+        },
+        {
+          "day": 9,
+          "wp_finanse": "Sieńko -Tajlandia, Krawiel - urlop, 6-14 Glinka/10-18 Master",
+          "poranek": "6-14 Kalus/ Ciszak/Gadawa",
+          "popo": "14 Chudy / Sąsiada",
+          "odbiory": "Żugier za 14.06",
+          "urlopy": "Losik, Bellon/krawiel"
+        },
+        {
+          "day": 10,
+          "wp_finanse": "Sieńko -Tajlandia, Krawiel - urlop, 6-14 Master/10-18 Glinka",
+          "poranek": "6-14 Kalus/Chudy 9-17 Żugier",
+          "popo": "14-22 Bera / Sąsiada/Gadawa",
+          "odbiory": "",
+          "urlopy": "Losik, Bellon/krawiel"
+        },
+        {
+          "day": 11,
+          "wp_finanse": "Sieńko -Tajlandia, 6-14 Glinka/10-18 Master/Krawiel granica",
+          "poranek": "6-14 Kalus/ Gadawa/Chudy 9-17 Żugier",
+          "popo": "14-22 M.Walków / Sąsiada",
+          "odbiory": "",
+          "urlopy": "Losik, Bellon"
+        },
+        {
+          "day": 12,
+          "wp_finanse": "Sieńko -Tajlandia, Krawiel 6-1410-18 Master/odbiór Glinka",
+          "poranek": "6-14 Kalus/ Ciszak/Gadawa 9-17 Żugier",
+          "popo": "14-22 M.Walków / Sąsiada",
+          "odbiory": "",
+          "urlopy": "Losik, Bellon"
+        },
+        {
+          "day": 13,
+          "wp_finanse": "8-16 Glinka,",
+          "poranek": "7-15 Żugier 13-21 M.Walków",
+          "popo": "9-17 Wysota",
+          "odbiory": "",
+          "urlopy": "Losik, Bellon/Wysota"
+        },
+        {
+          "day": 14,
+          "wp_finanse": "8-16 Glinka",
+          "poranek": "7-15 Żugier 13-21 M.Walków",
+          "popo": "9-17 Wysota",
+          "odbiory": "",
+          "urlopy": "Losik, Bellon/Wysota"
+        },
+        {
+          "day": 15,
+          "wp_finanse": "Sieńko- urlop/krawiel 6-14/13-21 Master/odbiór Glinka",
+          "poranek": "6-14 Kalus/ Ciszak/Gadawa 9-17 Chudy",
+          "popo": "14-22 Bera/ Żugier / Sąsiada",
+          "odbiory": "M.Walków za 13.06.",
+          "urlopy": "Losik, Bellon/Wysota"
+        },
+        {
+          "day": 16,
+          "wp_finanse": "Sieńko - urlop/6-14 Master/7-15 Glinka",
+          "poranek": "6-14 Kalus/ Ciszak/ Zugier",
+          "popo": "14-22 Sąsiada / Chudy",
+          "odbiory": "M.Walków za 14.06.",
+          "urlopy": "Losik, Bellon/Wysota"
+        },
+        {
+          "day": 17,
+          "wp_finanse": "Sieńko - urlop/6-14 Master/7-15 Glinka",
+          "poranek": "6-14 Kalus/Chudy/Bera 9-17 Żugier",
+          "popo": "14-22 M.Walków / Sąsiada",
+          "odbiory": "",
+          "urlopy": "Losik, Bellon/Wysota"
+        },
+        {
+          "day": 18,
+          "wp_finanse": "Sieńko - urlop/6-14 Master/7-15 Glinka",
+          "poranek": "6-14 Kalus/Bera/ Żugier / 9-17 Sąsiada",
+          "popo": "14-22 Żugier / Walków (?)",
+          "odbiory": "Kalus za 13, Chudy za 21.06",
+          "urlopy": "Losik, Bellon/Wysota"
+        },
+        {
+          "day": 19,
+          "wp_finanse": "6-14 Glinka/7-15 Master/13-21 Sieńko/",
+          "poranek": "6-14 Kalus/ Ciszak/Bera 9-17 Żugier",
+          "popo": "14-22 M.Walków / Sąsiada",
+          "odbiory": "Kalus za 14,",
+          "urlopy": "Losik, Bellon/Wysota"
+        },
+        {
+          "day": 20,
+          "wp_finanse": "Krawiel",
+          "poranek": "7-15 Kalus / 13-21 Gospodarczyk",
+          "popo": "9-17 Żugier",
+          "odbiory": "",
+          "urlopy": "Losik, Bellon/Wysota"
+        },
+        {
+          "day": 21,
+          "wp_finanse": "Krawiel",
+          "poranek": "7-15 Kalus / 13-21 Bera",
+          "popo": "9-17 Żugier",
+          "odbiory": "",
+          "urlopy": "Losik, Bellon/Wysota"
+        },
+        {
+          "day": 22,
+          "wp_finanse": "6-14 Sieńko/10-18 Krawiel",
+          "poranek": "6-14 Kalus/ Ciszak/Chudy",
+          "popo": "14-22 Losik/ Żugier/ Sąsiada",
+          "odbiory": "Gadawa wolne za",
+          "urlopy": "Wysota, Walków"
+        },
+        {
+          "day": 23,
+          "wp_finanse": "6-14 Sieńko/7-15 Glinka, Krawiel/Master 13-21",
+          "poranek": "6-14 Kalus/ Ciszak/Chudy",
+          "popo": "14-22 Żugier / Sąsiada",
+          "odbiory": "",
+          "urlopy": "Wysota, Walków"
+        },
+        {
+          "day": 24,
+          "wp_finanse": "6-14 Sieńko/10-18 Krawiel",
+          "poranek": "6-14 Kalus/Chudy/Gadawa, 9-17 Chudy",
+          "popo": "14-22 Żugier / Sąsiada",
+          "odbiory": "",
+          "urlopy": "Wysota, Walków"
+        },
+        {
+          "day": 25,
+          "wp_finanse": "6-14 Sieńko/10-18 Krawiel",
+          "poranek": "6-14 Żugier/Gadawa/",
+          "popo": "14-22 Bera / Sąsiada",
+          "odbiory": "Chudy za 27.06",
+          "urlopy": "Wysota, Walków"
+        },
+        {
+          "day": 26,
+          "wp_finanse": "Sieńko - Gołębiewski/6-14 krawiel/13-21 Glinka",
+          "poranek": "6-14 Żugier/Gadawa",
+          "popo": "14-22 Losik / Sąsiada",
+          "odbiory": "Bera za 13.06, Ciszak za 30.05",
+          "urlopy": "Wysota, Walków, Bellon"
+        },
+        {
+          "day": 27,
+          "wp_finanse": "Sieńko - Gołębiewski",
+          "poranek": "7-15 Losik, 13-21 Chudy",
+          "popo": "9-17 Ciszak",
+          "odbiory": "",
+          "urlopy": "Wysota, Walków"
+        },
+        {
+          "day": 28,
+          "wp_finanse": "Sieńko - Gołębiewski",
+          "poranek": "7-15 Losik / 13-21 Sąsiada",
+          "popo": "9-17 Chudy",
+          "odbiory": "",
+          "urlopy": "Wysota, Walków"
+        },
+        {
+          "day": 29,
+          "wp_finanse": "Sieńko - odbiór/ 6-14 Master, Glinka/10-18 Krawiel",
+          "poranek": "6-14 Kalus/ Ciszak/Chudy/Gadawa",
+          "popo": "14-22 Żugier / M.Walków / Bera",
+          "odbiory": "Losik za 27.06 / Sąsiada za 27.06",
+          "urlopy": ""
+        },
+        {
+          "day": 30,
+          "wp_finanse": "Sieńko - odbiór/6-14 Master10-18 Krawiel",
+          "poranek": "6-14 Kalus/ Ciszak/Chudy/Gadawa / 9-17 Sąsiada",
+          "popo": "14-22 Losik/ Żugier / M.Walków",
+          "odbiory": "",
+          "urlopy": ""
+        }
+      ]
+    },
+    {
+      "name": "Lipiec",
+      "days": [
+        {
+          "day": 1,
+          "wp_finanse": "",
+          "poranek": "6-14 Kalus/Gadawa/Ciszak/Chudy",
+          "popo": "14-22 Żugier / Sąsiada",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 2,
+          "wp_finanse": "",
+          "poranek": "6-14 Kalus/ Losik/Gadawa",
+          "popo": "14-22 XXX/ Walków",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 3,
+          "wp_finanse": "",
+          "poranek": "6-14 Kalus/ Ciszak/Gadawa",
+          "popo": "14-22 M.Walków / Sąsiada",
+          "odbiory": ", Chudy za 28.06",
+          "urlopy": ""
+        },
+        {
+          "day": 4,
+          "wp_finanse": "Krawiel",
+          "poranek": "7-15 Gadawa/xxx",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 5,
+          "wp_finanse": "Krawiel",
+          "poranek": "7-15 Gadawa/xxx",
+          "popo": "9-17 Chudy",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 6,
+          "wp_finanse": "Krawiel odbior za 4.07",
+          "poranek": "6-14 Kalus/ Żugier/Gadawa",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 7,
+          "wp_finanse": "Krawiel odbior za 5.07",
+          "poranek": "6-14 Kalus/ Żugier/Gadawa, 9-17 Chudy",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 8,
+          "wp_finanse": "",
+          "poranek": "6-14 Kalus/Ciszak Chudy",
+          "popo": "14-22 Chudy",
+          "odbiory": "Żugier za 5.07",
+          "urlopy": ""
+        },
+        {
+          "day": 9,
+          "wp_finanse": "",
+          "poranek": "6-14 Kalus/Gadawa/Ciszak",
+          "popo": "",
+          "odbiory": "Żugier za 18.07",
+          "urlopy": ""
+        },
+        {
+          "day": 10,
+          "wp_finanse": "",
+          "poranek": "6-14 Kalus/ Losik/Gadawa 9-17 Chudy",
+          "popo": "",
+          "odbiory": "Żugier za 19.07",
+          "urlopy": ""
+        },
+        {
+          "day": 11,
+          "wp_finanse": "",
+          "poranek": "7-15 Losik",
+          "popo": "9-17 Kalus",
+          "odbiory": "",
+          "urlopy": "Sąsiada"
+        },
+        {
+          "day": 12,
+          "wp_finanse": "",
+          "poranek": "7-15 Losik",
+          "popo": "9-17 Kalus",
+          "odbiory": "",
+          "urlopy": "Sąsiada"
+        },
+        {
+          "day": 13,
+          "wp_finanse": "",
+          "poranek": "6-14 Kalus/ Żugier/Gadawa",
+          "popo": "",
+          "odbiory": "Losik za 11.07",
+          "urlopy": "Sąsiada"
+        },
+        {
+          "day": 14,
+          "wp_finanse": "",
+          "poranek": "6-14 Kalus/ Żugier/Gadawa",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": "Sąsiada"
+        },
+        {
+          "day": 15,
+          "wp_finanse": "",
+          "poranek": "6-14 Kalus/ Żugier/Gadawa",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Sąsiada"
+        },
+        {
+          "day": 16,
+          "wp_finanse": "",
+          "poranek": "6-14 Kalus/Losik/ Żugier",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Sąsiada"
+        },
+        {
+          "day": 17,
+          "wp_finanse": "",
+          "poranek": "6-14 Kalus/Gadawa/Bera",
+          "popo": "14-22 Żugier",
+          "odbiory": "Losik za 12.07",
+          "urlopy": "Sąsiada"
+        },
+        {
+          "day": 18,
+          "wp_finanse": "",
+          "poranek": "7-15 Żugier",
+          "popo": "9-17 Chudy",
+          "odbiory": "",
+          "urlopy": "Kalus / Sąsiada"
+        },
+        {
+          "day": 19,
+          "wp_finanse": "",
+          "poranek": "7-15 Żugier",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Kalus / Sąsiada"
+        },
+        {
+          "day": 20,
+          "wp_finanse": "",
+          "poranek": "6-14 Chudy/Gadawa",
+          "popo": "14-22 Losik/ Żugier",
+          "odbiory": "",
+          "urlopy": "Kalus / Sąsiada"
+        },
+        {
+          "day": 21,
+          "wp_finanse": "",
+          "poranek": "6-14 Chudy/Gadawa/Bera",
+          "popo": "14-22 Żugier",
+          "odbiory": "",
+          "urlopy": "Kalus / Sąsiada"
+        },
+        {
+          "day": 22,
+          "wp_finanse": "",
+          "poranek": "6-14 Żugier/Gadawa/Bera",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Kalus / Sąsiada"
+        },
+        {
+          "day": 23,
+          "wp_finanse": "Master odbiór",
+          "poranek": "6-14 Żugier/Gadawa/Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Kalus"
+        },
+        {
+          "day": 24,
+          "wp_finanse": "Master odbiór",
+          "poranek": "6-14 Losik/ Żugier/Gadawa",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Kalus"
+        },
+        {
+          "day": 25,
+          "wp_finanse": "Master 8-16",
+          "poranek": "7-15 Bera/13-21 Chudy",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Kalus"
+        },
+        {
+          "day": 26,
+          "wp_finanse": "Master 8-16",
+          "poranek": "7-15 Bera/xxx",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Kalus"
+        },
+        {
+          "day": 27,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa/Bera",
+          "popo": "14-22 Losik/ Żugier",
+          "odbiory": "",
+          "urlopy": "Kalus"
+        },
+        {
+          "day": 28,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa/Bera",
+          "popo": "14-22 Żugier",
+          "odbiory": "",
+          "urlopy": "Kalus"
+        },
+        {
+          "day": 29,
+          "wp_finanse": "",
+          "poranek": "6-14 Żugier/Gadawa",
+          "popo": "14-22 Bera",
+          "odbiory": "",
+          "urlopy": "Kalus"
+        },
+        {
+          "day": 30,
+          "wp_finanse": "",
+          "poranek": "6-14 Żugier/Gadawa/Losik",
+          "popo": "",
+          "odbiory": "Bera za 25.07",
+          "urlopy": "Kalus"
+        },
+        {
+          "day": 31,
+          "wp_finanse": "",
+          "poranek": "6-14 Losik/ Zugier/Gadawa",
+          "popo": "",
+          "odbiory": "Bera za 26.07",
+          "urlopy": "Kalus"
+        }
+      ]
+    },
+    {
+      "name": "Sierpień",
+      "days": [
+        {
+          "day": 1,
+          "wp_finanse": "",
+          "poranek": "7-15 Gadawa/xxx",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Bera, Żugier, Kalus"
+        },
+        {
+          "day": 2,
+          "wp_finanse": "",
+          "poranek": "7-15 Gadawa/xxx",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Bera, Żugier, Kalus"
+        },
+        {
+          "day": 3,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": "Bera, Żugier"
+        },
+        {
+          "day": 4,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Bera, Żugier"
+        },
+        {
+          "day": 5,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Bera, Żugier"
+        },
+        {
+          "day": 6,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa/Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Bera, Żugier"
+        },
+        {
+          "day": 7,
+          "wp_finanse": "",
+          "poranek": "6-14 Losik/Gadawa",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Bera, Żugier"
+        },
+        {
+          "day": 8,
+          "wp_finanse": "",
+          "poranek": "7-15 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Bera, Żugier"
+        },
+        {
+          "day": 9,
+          "wp_finanse": "",
+          "poranek": "7-15 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Bera, Żugier"
+        },
+        {
+          "day": 10,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa",
+          "popo": "",
+          "odbiory": "Losik za 08.08",
+          "urlopy": "Bera, Żugier"
+        },
+        {
+          "day": 11,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": "Bera, Żugier"
+        },
+        {
+          "day": 12,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Bera, Żugier"
+        },
+        {
+          "day": 13,
+          "wp_finanse": "",
+          "poranek": "6-14 Losik/Gadawa",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Bera, Żugier"
+        },
+        {
+          "day": 14,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa",
+          "popo": "",
+          "odbiory": "Losik za 09.08",
+          "urlopy": "Bera, Żugier"
+        },
+        {
+          "day": 15,
+          "wp_finanse": "",
+          "poranek": "7-15 Kalus / 13-21 M.Walków",
+          "popo": "9-17 xxx",
+          "odbiory": "",
+          "urlopy": "Bera, Żugier"
+        },
+        {
+          "day": 16,
+          "wp_finanse": "",
+          "poranek": "7-15 Kalus / 13-21 M.Walków",
+          "popo": "9-17 xxx",
+          "odbiory": "",
+          "urlopy": "Bera, Żugier"
+        },
+        {
+          "day": 17,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa/Żugier",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": "Chudy, Bera"
+        },
+        {
+          "day": 18,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa",
+          "popo": "14-22 Żugier",
+          "odbiory": "",
+          "urlopy": "Chudy, Bera"
+        },
+        {
+          "day": 19,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa/Żugier",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Chudy, Bera"
+        },
+        {
+          "day": 20,
+          "wp_finanse": "",
+          "poranek": "6-14 Losik/Żugier",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "CHudy, Bera"
+        },
+        {
+          "day": 21,
+          "wp_finanse": "",
+          "poranek": "6-14 Losik/Gadawa/Żugier",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Chudy, Bera"
+        },
+        {
+          "day": 22,
+          "wp_finanse": "",
+          "poranek": "7-15 Żugier",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Chudy, Bera"
+        },
+        {
+          "day": 23,
+          "wp_finanse": "",
+          "poranek": "7-15 Żugier",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Chudy, Bera"
+        },
+        {
+          "day": 24,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa",
+          "popo": "14-22 Losik/Żugier",
+          "odbiory": "",
+          "urlopy": "Chudy"
+        },
+        {
+          "day": 25,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa",
+          "popo": "14-22 Żugier",
+          "odbiory": "",
+          "urlopy": "Chudy"
+        },
+        {
+          "day": 26,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa/Żugier",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Chudy"
+        },
+        {
+          "day": 27,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa/Losik",
+          "popo": "",
+          "odbiory": "Żugier za 22.08",
+          "urlopy": "Chudy"
+        },
+        {
+          "day": 28,
+          "wp_finanse": "",
+          "poranek": "6-14 Losik/Gadawa",
+          "popo": "",
+          "odbiory": "Żugier za 23.08, Gadawa za",
+          "urlopy": "Chudy"
+        },
+        {
+          "day": 29,
+          "wp_finanse": "",
+          "poranek": "7-15 Bera/xxx",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 30,
+          "wp_finanse": "",
+          "poranek": "7-15 Bera/xxx",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 31,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "14-22 Losik",
+          "odbiory": "Gadawa wolne za",
+          "urlopy": ""
+        }
+      ]
+    },
+    {
+      "name": "Wrzesień",
+      "days": [
+        {
+          "day": 1,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "Gadawa wolne za",
+          "urlopy": ""
+        },
+        {
+          "day": 2,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Gadawa"
+        },
+        {
+          "day": 3,
+          "wp_finanse": "",
+          "poranek": "6-14 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Gadawa"
+        },
+        {
+          "day": 4,
+          "wp_finanse": "",
+          "poranek": "6-14 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Gadawa"
+        },
+        {
+          "day": 5,
+          "wp_finanse": "",
+          "poranek": "7-15 Gadawa/xxx",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Losik"
+        },
+        {
+          "day": 6,
+          "wp_finanse": "",
+          "poranek": "7-15 Gadawa/xxx",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Losik"
+        },
+        {
+          "day": 7,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Losik"
+        },
+        {
+          "day": 8,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Losik"
+        },
+        {
+          "day": 9,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Losik"
+        },
+        {
+          "day": 10,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Losik"
+        },
+        {
+          "day": 11,
+          "wp_finanse": "",
+          "poranek": "6-14 Gadawa",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Losik"
+        },
+        {
+          "day": 12,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Losik"
+        },
+        {
+          "day": 13,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Losik"
+        },
+        {
+          "day": 14,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Losik"
+        },
+        {
+          "day": 15,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Losik"
+        },
+        {
+          "day": 16,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Losik"
+        },
+        {
+          "day": 17,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Losik"
+        },
+        {
+          "day": 18,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Kalus, Losik"
+        },
+        {
+          "day": 19,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Losik"
+        },
+        {
+          "day": 20,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Losik"
+        },
+        {
+          "day": 21,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 22,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 23,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 24,
+          "wp_finanse": "",
+          "poranek": "6-14 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 25,
+          "wp_finanse": "",
+          "poranek": "6-14 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 26,
+          "wp_finanse": "",
+          "poranek": "7-15 Kalus / 13-21 Losik",
+          "popo": "9-17 Żugier",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 27,
+          "wp_finanse": "",
+          "poranek": "7-15 Kalus / 13-21 Losik",
+          "popo": "9-17 Żugier",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 28,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "Losik za 26.09",
+          "urlopy": ""
+        },
+        {
+          "day": 29,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 30,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        }
+      ]
+    },
+    {
+      "name": "Październik",
+      "days": [
+        {
+          "day": 1,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 2,
+          "wp_finanse": "",
+          "poranek": "6-14 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 3,
+          "wp_finanse": "",
+          "poranek": "7-15 Gadawa/xxx",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 4,
+          "wp_finanse": "",
+          "poranek": "7-15 Gadawa/xxx",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 5,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "Losik za 27.09",
+          "urlopy": ""
+        },
+        {
+          "day": 6,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 7,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 8,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 9,
+          "wp_finanse": "",
+          "poranek": "6-14 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 10,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 11,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 12,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 13,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 14,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 15,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 16,
+          "wp_finanse": "",
+          "poranek": "6-14 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 17,
+          "wp_finanse": "",
+          "poranek": "7-15 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 18,
+          "wp_finanse": "",
+          "poranek": "7-15 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 19,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 20,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 21,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 22,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 23,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "Losik za 17.10",
+          "urlopy": ""
+        },
+        {
+          "day": 24,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 25,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 26,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "Losik za 18.10",
+          "urlopy": ""
+        },
+        {
+          "day": 27,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 28,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 29,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 30,
+          "wp_finanse": "",
+          "poranek": "6-14 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 31,
+          "wp_finanse": "",
+          "poranek": "7-15 Kalus / 13-21 M.Walków",
+          "popo": "9-17 Bera",
+          "odbiory": "",
+          "urlopy": ""
+        }
+      ]
+    },
+    {
+      "name": "Listopad",
+      "days": [
+        {
+          "day": 1,
+          "wp_finanse": "",
+          "poranek": "7-15 Kalus / 13-21 M.Walków",
+          "popo": "9-17 Bera",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 2,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "14-22 Losik",
+          "odbiory": "Bera za 31.10",
+          "urlopy": ""
+        },
+        {
+          "day": 3,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 4,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 5,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 6,
+          "wp_finanse": "",
+          "poranek": "6-14 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 7,
+          "wp_finanse": "",
+          "poranek": "7-15 Gadawa/13-21 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 8,
+          "wp_finanse": "",
+          "poranek": "7-15 Gadawa/13-21 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 9,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": "M.Walków"
+        },
+        {
+          "day": 10,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": "M.Walków"
+        },
+        {
+          "day": 11,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków"
+        },
+        {
+          "day": 12,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "Losik za 07.11",
+          "urlopy": "M.Walków"
+        },
+        {
+          "day": 13,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "Losik za 08.11",
+          "urlopy": "M.Walków"
+        },
+        {
+          "day": 14,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków"
+        },
+        {
+          "day": 15,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków"
+        },
+        {
+          "day": 16,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": "M.Walków"
+        },
+        {
+          "day": 17,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków"
+        },
+        {
+          "day": 18,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków"
+        },
+        {
+          "day": 19,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków"
+        },
+        {
+          "day": 20,
+          "wp_finanse": "",
+          "poranek": "6-14 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków"
+        },
+        {
+          "day": 21,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków"
+        },
+        {
+          "day": 22,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków"
+        },
+        {
+          "day": 23,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": "M.Walków"
+        },
+        {
+          "day": 24,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków"
+        },
+        {
+          "day": 25,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków"
+        },
+        {
+          "day": 26,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków"
+        },
+        {
+          "day": 27,
+          "wp_finanse": "",
+          "poranek": "6-14 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków"
+        },
+        {
+          "day": 28,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków"
+        },
+        {
+          "day": 29,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków"
+        },
+        {
+          "day": 30,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": ""
+        }
+      ]
+    },
+    {
+      "name": "Grudzień",
+      "days": [
+        {
+          "day": 1,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 2,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 3,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 4,
+          "wp_finanse": "",
+          "poranek": "6-14 Losik/Gadawa",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 5,
+          "wp_finanse": "",
+          "poranek": "7-15 Gadawa/xxx",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 6,
+          "wp_finanse": "",
+          "poranek": "7-15 Gadawa/xxx",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 7,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 8,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 9,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 10,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 11,
+          "wp_finanse": "",
+          "poranek": "6-14 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 12,
+          "wp_finanse": "",
+          "poranek": "7-15 Kalus",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 13,
+          "wp_finanse": "",
+          "poranek": "7-15 Kalus",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 14,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 15,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 16,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": ""
+        },
+        {
+          "day": 17,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Gadawa,"
+        },
+        {
+          "day": 18,
+          "wp_finanse": "",
+          "poranek": "6-14 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Gadawa,"
+        },
+        {
+          "day": 19,
+          "wp_finanse": "",
+          "poranek": "7-15 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Kalus,Gadawa,"
+        },
+        {
+          "day": 20,
+          "wp_finanse": "",
+          "poranek": "7-15 Losik",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "Kalus,Gadawa,"
+        },
+        {
+          "day": 21,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "14-22 Losik",
+          "odbiory": "",
+          "urlopy": "Kalus,Gadawa"
+        },
+        {
+          "day": 22,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "Losik za 19.12",
+          "urlopy": "Kalus,Gadawa"
+        },
+        {
+          "day": 23,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "Losik za 20.12",
+          "urlopy": "M. Walków, Kalus,Gadawa"
+        },
+        {
+          "day": 24,
+          "wp_finanse": "",
+          "poranek": "7-15 Bera",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków, Kalus, Gadawa, Losik"
+        },
+        {
+          "day": 25,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków, Kalus, Gadawa, Losik"
+        },
+        {
+          "day": 26,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków, Kalus, Gadawa, Losik"
+        },
+        {
+          "day": 27,
+          "wp_finanse": "",
+          "poranek": "7-15 Bera",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków, Kalus, Gadawa, Losik"
+        },
+        {
+          "day": 28,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków, Kalus, Gadawa, Losik"
+        },
+        {
+          "day": 29,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków, Kalus, Gadawa, Losik"
+        },
+        {
+          "day": 30,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków, Kalus, Gadawa, Losik"
+        },
+        {
+          "day": 31,
+          "wp_finanse": "",
+          "poranek": "",
+          "popo": "",
+          "odbiory": "",
+          "urlopy": "M.Walków, Kalus, Gadawa, Losik"
+        }
+      ]
+    }
+  ]
+}
