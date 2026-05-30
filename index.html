@@ -11,43 +11,83 @@
 
 <header>
   <div class="brand">📅 Grafik redakcji</div>
+  <nav class="tabs">
+    <button class="tab tab-active" data-tab="grafik">Grafik</button>
+    <button class="tab" data-tab="redakcja">Redakcja</button>
+  </nav>
   <div class="controls">
-    <label>Rok:
-      <input type="number" id="year-input" min="2020" max="2099" value="2021">
-    </label>
-    <select id="month-select"></select>
-    <span id="status" class="status status-offline">offline</span>
-    <button id="export-btn" title="Pobierz cały grafik jako JSON">⬇ JSON</button>
-    <button id="import-btn" title="Wczytaj JSON i nadpisz dane">⬆ JSON</button>
-    <input type="file" id="import-file" accept=".json" hidden>
+    <span id="status" class="status status-offline">local</span>
     <button id="settings-btn" title="Konfiguracja Firebase">⚙</button>
   </div>
 </header>
 
-<main>
+<!-- =========================== ZAKŁADKA: GRAFIK =========================== -->
+<section id="view-grafik" class="view view-active">
+  <div class="month-bar">
+    <button id="prev-month" class="nav-btn" title="Poprzedni miesiąc">◀</button>
+    <div id="month-label" class="month-label">…</div>
+    <button id="next-month" class="nav-btn" title="Następny miesiąc">▶</button>
+    <button id="today-btn" class="nav-btn nav-btn-today" title="Skocz do dziś">dziś</button>
+    <div class="month-actions">
+      <button id="export-btn" title="Pobierz wszystko jako JSON">⬇ JSON</button>
+      <button id="import-btn" title="Wczytaj JSON">⬆ JSON</button>
+      <input type="file" id="import-file" accept=".json" hidden>
+    </div>
+  </div>
+
   <div id="grid-wrap">
     <table id="grid">
       <thead>
         <tr>
           <th class="col-day">Dzień</th>
-          <th>WP FINANSE</th>
-          <th>Poranek 6-14</th>
-          <th>Popo 14-22</th>
-          <th>Odbiory</th>
-          <th>Urlopy</th>
+          <th class="col-wp">WP&nbsp;FINANSE</th>
+          <th class="col-shift col-shift-am">Poranek 6-14</th>
+          <th class="col-shift col-shift-pm">Popo 14-22</th>
+          <th class="col-neu">OBECNI</th>
+          <th class="col-wyd">WYDAWANIE</th>
+          <th class="col-neu">Odbiory</th>
+          <th class="col-neu">Urlopy</th>
         </tr>
       </thead>
       <tbody id="grid-body"></tbody>
     </table>
   </div>
-</main>
+</section>
 
+<!-- =========================== ZAKŁADKA: REDAKCJA =========================== -->
+<section id="view-redakcja" class="view">
+  <div class="redakcja-bar">
+    <h2>Redakcja</h2>
+    <button id="add-person-btn" class="primary">+ Dodaj osobę</button>
+  </div>
+  <div id="redakcja-list" class="redakcja-list"></div>
+  <p class="hint">
+    Role: <b>WP Finanse</b> i <b>Money</b> trafiają do kolumn obsadowych (i do OBECNI).
+    <b>Wydawca</b> trafia do kolumny WYDAWANIE. Można zaznaczyć kilka ról jednej osobie.
+  </p>
+</section>
+
+<!-- =========================== DIALOG: edytor komórki =========================== -->
+<dialog id="cell-dialog">
+  <form method="dialog">
+    <h2 id="cell-dialog-title">Edycja komórki</h2>
+    <div id="cell-slots"></div>
+    <button type="button" id="cell-add-slot" class="ghost">+ Dodaj osobę</button>
+    <div class="actions">
+      <button value="cancel">Anuluj</button>
+      <button value="clear" class="ghost-danger">Wyczyść komórkę</button>
+      <button value="save" id="cell-save" class="primary">Zapisz</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- =========================== DIALOG: Firebase config =========================== -->
 <dialog id="settings-dialog">
   <form method="dialog">
-    <h2>Konfiguracja Firebase</h2>
+    <h2>Konfiguracja Firebase (real-time sync)</h2>
     <p class="hint">
-      Aby grafik był współdzielony na żywo między ludźmi, wklej config swojego projektu Firebase Realtime DB
-      (Firebase Console → Project Settings → Web App config). Bez tego dane lecą tylko do localStorage tej przeglądarki.
+      Wklej config swojego projektu Firebase Realtime DB (Console → Project Settings → Web App).
+      Bez tego dane lecą tylko do localStorage tej przeglądarki.
     </p>
     <label>databaseURL:
       <input type="url" id="fb-url" placeholder="https://twoj-projekt-default-rtdb.europe-west1.firebasedatabase.app">
@@ -66,27 +106,8 @@
 </dialog>
 
 <footer>
-  <span id="footer-hint">
-    Edytuj komórkę klikając w nią. Zmiany zapisują się automatycznie.
-    <a href="#" id="show-readme">Jak to działa?</a>
-  </span>
+  Klikasz w komórkę → wybierasz z listy. Bez wpisywania.
 </footer>
-
-<dialog id="readme-dialog">
-  <form method="dialog">
-    <h2>Jak to działa</h2>
-    <ul>
-      <li><b>Edycja:</b> kliknij w dowolną komórkę, wpisz tekst, Tab/Enter zatwierdza.</li>
-      <li><b>Współdzielenie:</b> jeśli skonfigurowany jest Firebase (⚙), każda zmiana wszystkich widzą na żywo (1-2s).</li>
-      <li><b>Bez Firebase:</b> dane trzymają się w localStorage Twojej przeglądarki. Eksport/import JSON żeby się podzielić.</li>
-      <li><b>Weekendy</b> i święta polskie podświetlone na żółto (na podstawie roku z górnego pola).</li>
-      <li><b>Reset:</b> ⬆ JSON → wybierz <code>data-initial.json</code> z repo żeby cofnąć do stanu wyjściowego.</li>
-    </ul>
-    <div class="actions">
-      <button value="ok" class="primary">OK</button>
-    </div>
-  </form>
-</dialog>
 
 <script type="module" src="app.js"></script>
 </body>
