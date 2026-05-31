@@ -175,7 +175,11 @@ function dayDuplicates(cell) {
   (cell.popo       || []).forEach(s => bump(s.name));
   (cell.makrodyzur || []).forEach(s => bump(s.name));
   const w = cell.wydawanie;
-  if (w) { if (w.rano)  bump(w.rano.name); if (w.popol) bump(w.popol.name); }
+  if (w) {
+    if (w.rano)  bump(w.rano.name);
+    if (w.popol) bump(w.popol.name);
+    if (w.plan)  bump(w.plan.name);
+  }
   const dups = new Set();
   Object.entries(counts).forEach(([n,c]) => { if (c > 1) dups.add(n); });
   return dups;
@@ -200,6 +204,7 @@ function shiftCountsForMonth(year, monthIdx) {
     (cell.makrodyzur || []).forEach(s => add(s.name, 'makrodyzur'));
     if (cell.wydawanie?.rano)  add(cell.wydawanie.rano.name,  'wydawanie');
     if (cell.wydawanie?.popol) add(cell.wydawanie.popol.name, 'wydawanie');
+    if (cell.wydawanie?.plan)  add(cell.wydawanie.plan.name,  'wydawanie');
   }
   return counts;
 }
@@ -269,12 +274,15 @@ function renderPeoplePills(people) {
   if (!people || !people.length) return '<div class="cell-empty">—</div>';
   return people.map(n => `<span class="pill pill-person">${escapeHtml(n)}</span>`).join('');
 }
-function renderWydawaniePills(wyd, dups) {
-  if (!wyd || (!wyd.rano && !wyd.popol)) return '<div class="cell-empty">—</div>';
-  const row = (lab, slot) => slot
-    ? `<div class="wyd-row"><span class="label">${lab}</span><span class="${pillClass(slot.name, dups)}" title="${dups?.has(slot.name)?'⚠ dubel dnia':''}">${slot.hours?`<span class="hrs">${slot.hours}</span><span class="sep">·</span>`:''}${escapeHtml(slot.name)}</span></div>`
-    : `<div class="wyd-row wyd-empty"><span class="label">${lab}</span><span class="cell-empty">—</span></div>`;
-  return row('Rano', wyd.rano) + row('Popoł', wyd.popol);
+function renderWydawaniePills(wyd, dups, isFriday) {
+  if (!wyd || (!wyd.rano && !wyd.popol && !wyd.plan)) return '<div class="cell-empty">—</div>';
+  const row = (lab, slot, extraCls='') => slot
+    ? `<div class="wyd-row ${extraCls}"><span class="label">${lab}</span><span class="${pillClass(slot.name, dups)}" title="${dups?.has(slot.name)?'⚠ dubel dnia':''}">${slot.hours?`<span class="hrs">${slot.hours}</span><span class="sep">·</span>`:''}${escapeHtml(slot.name)}</span></div>`
+    : `<div class="wyd-row wyd-empty ${extraCls}"><span class="label">${lab}</span><span class="cell-empty">—</span></div>`;
+  let out = row('Rano', wyd.rano) + row('Popoł', wyd.popol);
+  // Planowanie weekendu — tylko w piątki (lub jeśli już zapisane mimo nie-piątku)
+  if (isFriday || wyd.plan) out += row('Plan WKD', wyd.plan, 'wyd-plan');
+  return out;
 }
 
 function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
@@ -314,7 +322,7 @@ function renderGrafik() {
       let html;
       if (col.kind === 'shifts')         html = renderShiftPills(val, dups);
       else if (col.kind === 'people')    html = renderPeoplePills(val);
-      else if (col.kind === 'wydawanie') html = renderWydawaniePills(val, dups);
+      else if (col.kind === 'wydawanie') html = renderWydawaniePills(val, dups, dow === 5);
       td.innerHTML = html;
       tr.appendChild(td);
     });
@@ -346,6 +354,10 @@ function openCellEditor(dateKey, colKey) {
       { label: 'Rano',   name: current?.rano?.name  || '', hours: current?.rano?.hours  || '', hoursPart: 'am' },
       { label: 'Popoł',  name: current?.popol?.name || '', hours: current?.popol?.hours || '', hoursPart: 'pm' },
     ];
+    // Piątek (lub gdy plan już zapisany) → 3-ci slot "Planowanie WKD"
+    if (dow === 5 || current?.plan) {
+      slots.push({ label: 'Plan WKD', name: current?.plan?.name || '', hours: current?.plan?.hours || '', hoursPart: 'all' });
+    }
   }
 
   dialogContext = { dateKey, colKey, colDef, slots, isWeekend: wknd, fixedSlots: colDef.kind === 'wydawanie' };
@@ -446,9 +458,10 @@ $('#cell-dialog').addEventListener('close', e => {
       else delete state.grafik[dk][colKey];
     } else if (colDef.kind === 'wydawanie') {
       const out = {};
-      const [rano, popol] = slots;
-      if (rano.name)  out.rano  = { name: rano.name.trim(),  hours: rano.hours  || '' };
-      if (popol.name) out.popol = { name: popol.name.trim(), hours: popol.hours || '' };
+      const [rano, popol, plan] = slots;
+      if (rano?.name)  out.rano  = { name: rano.name.trim(),  hours: rano.hours  || '' };
+      if (popol?.name) out.popol = { name: popol.name.trim(), hours: popol.hours || '' };
+      if (plan?.name)  out.plan  = { name: plan.name.trim(),  hours: plan.hours  || '' };
       if (Object.keys(out).length) state.grafik[dk][colKey] = out;
       else delete state.grafik[dk][colKey];
     }

@@ -105,8 +105,14 @@ header {
 .month-actions button:hover { background: #eef1f3; }
 
 /* ============ Grid ============ */
-#grid-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 9px; overflow: auto; box-shadow: 0 1px 2px rgba(15,30,40,.03); }
-table#grid { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 1800px; table-layout: fixed; }
+/* max-height tworzy własny scroll-container w tabeli — dzięki temu sticky thead działa
+   gdy użytkownik przewija pionowo (a header strony zostaje przyklejony na górze). */
+#grid-wrap {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 9px;
+  overflow: auto; box-shadow: 0 1px 2px rgba(15,30,40,.03);
+  max-height: calc(100vh - 240px);
+}
+table#grid { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 2510px; table-layout: fixed; }
 table#grid th, table#grid td {
   border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
   vertical-align: top; padding: 0; text-align: left; overflow: hidden;
@@ -121,17 +127,18 @@ table#grid tr:last-child td { border-bottom: none; }
 table#grid th:last-child, table#grid td:last-child { border-right: none; }
 
 /* SZEROKOŚCI KOLUMN
-   WP / Poranek / Popo szerokie żeby pomieścić 4 osoby w jednej linii.
-   Makrodyżur (nowa kolumna) węższy, OBECNI 160, WYDAWANIE 230, Odbiory/Urlopy 120. */
+   Pille +40% (font 15px) wymuszają szersze kolumny obsadowe by zmieściły 4 osoby
+   w jednej linii. Tabela min-width 2240 → 2510px. Sticky thead zostaje wewnątrz
+   scroll-containera #grid-wrap (max-height: 100vh-240px). */
 .col-day   { width: 50px; }
-.col-wp    { width: 340px; }
-.col-shift-am { width: 340px; }
-.col-shift-pm { width: 340px; }
-.col-makro { width: 180px; }                   /* MAKRODYŻUR */
-table#grid th:nth-child(6) { width: 160px; }   /* OBECNI */
-table#grid th:nth-child(7) { width: 230px; }   /* WYDAWANIE */
-table#grid th:nth-child(8) { width: 120px; }   /* Odbiory */
-table#grid th:nth-child(9) { width: 120px; }   /* Urlopy */
+.col-wp    { width: 480px; }
+.col-shift-am { width: 480px; }
+.col-shift-pm { width: 480px; }
+.col-makro { width: 220px; }                   /* MAKRODYŻUR */
+table#grid th:nth-child(6) { width: 220px; }   /* OBECNI */
+table#grid th:nth-child(7) { width: 260px; }   /* WYDAWANIE — 3 sloty w piątek */
+table#grid th:nth-child(8) { width: 160px; }   /* Odbiory */
+table#grid th:nth-child(9) { width: 160px; }   /* Urlopy */
 
 table#grid td.cell { padding: 4px 6px; cursor: pointer; min-height: 40px; transition: filter .1s; }
 table#grid td.cell:hover { filter: brightness(0.97); }
@@ -159,29 +166,30 @@ table#grid tr.today td:last-child  { box-shadow: inset -2px 2px 0 var(--today-ri
 .cell-day .dow { font-size: 9px; font-weight: 700; color: var(--muted-2); text-transform: uppercase; letter-spacing: 0.06em; }
 
 /* ============ Pille ============
-   Kompaktowe, żeby 4 osoby zmieściły się w jednej linii w kolumnie ~340px.
-   Średnio pill = ~78px ("8-16·Krawiel"), 4× = 312px + odstępy ~24px = 336px. */
+   +40% względem poprzedniej iteracji. Średni pill = ~108px ('8-16·Krawiel'),
+   4 pille + odstępy mieszczą się w kolumnie 480px (4×108+12=444 + cell pad 12 = 456). */
 .pill {
-  display: inline-flex; align-items: center; gap: 3px;
-  padding: 2px 5px; border-radius: 5px; font-size: 11px; line-height: 1.2;
-  background: rgba(255,255,255,0.78); border: 1px solid rgba(15,30,40,0.08); color: var(--text);
-  margin: 1px 1px; font-weight: 600; white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 8px; border-radius: 7px; font-size: 14px; line-height: 1.25;
+  background: rgba(255,255,255,0.82); border: 1px solid rgba(15,30,40,0.09); color: var(--text);
+  margin: 2px 2px; font-weight: 600; white-space: nowrap;
 }
-.pill .hrs { font-variant-numeric: tabular-nums; color: var(--accent); font-size: 10px; font-weight: 800; }
+.pill .hrs { font-variant-numeric: tabular-nums; color: var(--accent); font-size: 13px; font-weight: 800; }
 .pill .sep { color: var(--muted-2); opacity: 0.45; }
 .pill .label {
-  font-size: 8px; font-weight: 800; color: var(--muted); text-transform: uppercase;
-  margin-right: 2px; letter-spacing: 0.05em;
+  font-size: 10px; font-weight: 800; color: var(--muted); text-transform: uppercase;
+  margin-right: 3px; letter-spacing: 0.05em;
 }
-.pill-person { font-size: 11px; }
+.pill-person { font-size: 14px; }
 .pill-dup { background: #fde0e0; border-color: #f4a5a5; color: #9b1d1d; }
-.pill-dup::before { content: '⚠'; font-size: 9px; margin-right: 1px; }
+.pill-dup::before { content: '⚠'; font-size: 11px; margin-right: 2px; }
 
-/* WYDAWANIE = stack pionowy */
-.wyd-row { display: flex; align-items: center; gap: 4px; padding: 2px 4px; }
-.wyd-row .label { min-width: 34px; font-size: 9px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
-.wyd-row .pill { margin: 0; padding: 3px 6px; font-size: 12px; }
+/* WYDAWANIE = stack pionowy. W piątek 3 sloty (Rano / Popoł / Plan WKD), inne dni 2. */
+.wyd-row { display: flex; align-items: center; gap: 5px; padding: 2px 4px; }
+.wyd-row .label { min-width: 44px; font-size: 10px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.wyd-row .pill { margin: 0; padding: 3px 7px; font-size: 13px; }
 .wyd-row.wyd-empty .cell-empty { padding: 2px; }
+.wyd-row.wyd-plan .label { color: var(--accent); }
 
 .cell-empty { color: var(--muted-2); font-size: 11px; padding: 4px 6px; font-style: italic; opacity: 0.6; }
 
