@@ -58,8 +58,12 @@ header {
   padding: 10px 16px; background: var(--surface); border-bottom: 1px solid var(--border);
   position: sticky; top: 0; z-index: 30;
 }
-.brand { display: flex; align-items: center; text-decoration: none; }
-.brand img { height: 52px; display: block; }
+.brand { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+.brand img {
+  height: 44px; width: auto;
+  max-height: 44px; max-width: 70px;
+  display: block; object-fit: contain;
+}
 
 .tabs { display: flex; gap: 4px; }
 .tab {
