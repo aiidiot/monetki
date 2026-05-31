@@ -34,17 +34,18 @@ const ROLES = {
 // Definicja kolumn grafiku.
 // hoursPart: 'am' | 'pm' | 'all' — który preset godzin pokazać w dropdownie.
 const COLUMNS = [
-  { key: 'wp_finanse', label: 'WP FINANSE',  bg: 'wp',        kind: 'shifts',    preferRole: 'wp_finanse', maxSlots: 4, hoursPart: 'all' },
-  { key: 'poranek',    label: 'Poranek 6-14',bg: 'am',        kind: 'shifts',    preferRole: 'money',      maxSlots: 4, hoursPart: 'am' },
-  { key: 'popo',       label: 'Popo 14-22',  bg: 'pm',        kind: 'shifts',    preferRole: 'money',      maxSlots: 4, hoursPart: 'pm' },
-  { key: 'obecni',     label: 'OBECNI',      bg: 'obecni',    kind: 'people',    preferRoles: ['wp_finanse','money'], maxSlots: 20 },
-  { key: 'wydawanie',  label: 'WYDAWANIE',   bg: 'wydawanie', kind: 'wydawanie', preferRole: 'wydawca' },
-  { key: 'odbiory',    label: 'Odbiory',     bg: 'odbiory',   kind: 'people',    maxSlots: 6 },
-  { key: 'urlopy',     label: 'Urlopy',      bg: 'urlopy',    kind: 'people',    maxSlots: 8 },
+  { key: 'wp_finanse',  label: 'WP FINANSE',  bg: 'wp',        kind: 'shifts',    preferRole: 'wp_finanse', maxSlots: 4, hoursPart: 'all' },
+  { key: 'poranek',     label: 'Poranek 6-14',bg: 'am',        kind: 'shifts',    preferRole: 'money',      maxSlots: 4, hoursPart: 'am' },
+  { key: 'popo',        label: 'Popo 14-22',  bg: 'pm',        kind: 'shifts',    preferRole: 'money',      maxSlots: 4, hoursPart: 'pm' },
+  { key: 'makrodyzur',  label: 'MAKRODYŻUR',  bg: 'makro',     kind: 'shifts',    maxSlots: 2, hoursPart: 'all' },
+  { key: 'obecni',      label: 'OBECNI',      bg: 'obecni',    kind: 'people',    preferRoles: ['wp_finanse','money'], maxSlots: 20 },
+  { key: 'wydawanie',   label: 'WYDAWANIE',   bg: 'wydawanie', kind: 'wydawanie', preferRole: 'wydawca' },
+  { key: 'odbiory',     label: 'Odbiory',     bg: 'odbiory',   kind: 'people',    maxSlots: 6 },
+  { key: 'urlopy',      label: 'Urlopy',      bg: 'urlopy',    kind: 'people',    maxSlots: 8 },
 ];
 
 // Pomocniczo: które kolumny "liczą się" jako dyżur (do detekcji duplikatów + statystyk).
-const SHIFT_COLS = ['wp_finanse','poranek','popo','wydawanie'];
+const SHIFT_COLS = ['wp_finanse','poranek','popo','makrodyzur','wydawanie'];
 
 // ============ Stan ============
 const state = {
@@ -172,6 +173,7 @@ function dayDuplicates(cell) {
   (cell.wp_finanse || []).forEach(s => bump(s.name));
   (cell.poranek    || []).forEach(s => bump(s.name));
   (cell.popo       || []).forEach(s => bump(s.name));
+  (cell.makrodyzur || []).forEach(s => bump(s.name));
   const w = cell.wydawanie;
   if (w) { if (w.rano)  bump(w.rano.name); if (w.popol) bump(w.popol.name); }
   const dups = new Set();
@@ -189,12 +191,13 @@ function shiftCountsForMonth(year, monthIdx) {
     if (!cell) continue;
     const add = (name, col) => {
       if (!name) return;
-      if (!counts[name]) counts[name] = { wp_finanse:0, poranek:0, popo:0, wydawanie:0, total:0 };
+      if (!counts[name]) counts[name] = { wp_finanse:0, poranek:0, popo:0, makrodyzur:0, wydawanie:0, total:0 };
       counts[name][col]++; counts[name].total++;
     };
     (cell.wp_finanse || []).forEach(s => add(s.name, 'wp_finanse'));
     (cell.poranek    || []).forEach(s => add(s.name, 'poranek'));
     (cell.popo       || []).forEach(s => add(s.name, 'popo'));
+    (cell.makrodyzur || []).forEach(s => add(s.name, 'makrodyzur'));
     if (cell.wydawanie?.rano)  add(cell.wydawanie.rano.name,  'wydawanie');
     if (cell.wydawanie?.popol) add(cell.wydawanie.popol.name, 'wydawanie');
   }
@@ -474,7 +477,7 @@ function renderRedakcja() {
   const sorted = [...state.redakcja].sort((a,b) => a.name.localeCompare(b.name, 'pl'));
   sorted.forEach((p) => {
     const realIdx = state.redakcja.indexOf(p);
-    const c = counts[p.name] || { wp_finanse:0, poranek:0, popo:0, wydawanie:0, total:0 };
+    const c = counts[p.name] || { wp_finanse:0, poranek:0, popo:0, makrodyzur:0, wydawanie:0, total:0 };
     const row = document.createElement('div');
     row.className = 'person-row';
     row.innerHTML = `
@@ -484,9 +487,9 @@ function renderRedakcja() {
           <span class="role-chip ${p.roles?.includes(r)?'active':''}" data-idx="${realIdx}" data-role="${r}">${ROLES[r]}</span>
         `).join('')}
       </div>
-      <div class="person-stats" title="Dyżury w bieżącym miesiącu: WP / Poranek / Popo / Wydawanie">
+      <div class="person-stats" title="Dyżury w bieżącym miesiącu: WP / Poranek / Popo / Makrodyżur / Wydawanie">
         <span class="stat stat-total">${c.total}</span>
-        <span class="stat-detail">${c.wp_finanse}·${c.poranek}·${c.popo}·${c.wydawanie}</span>
+        <span class="stat-detail">${c.wp_finanse}·${c.poranek}·${c.popo}·${c.makrodyzur}·${c.wydawanie}</span>
       </div>
       <button class="person-delete" data-idx="${realIdx}" title="Usuń">×</button>
     `;

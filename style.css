@@ -34,6 +34,7 @@
   --col-wp-h:      #ffd9bf;
   --col-am:        #d6f4f7;   /* turq ~25% */
   --col-pm:        #b3ebef;   /* turq ~45% */
+  --col-makro:     #f6e9ff;   /* fiolet jasny — odróżnia od popo */
   --col-wyd:       #fcefc6;   /* yellow ~50% */
   --col-jade:      #e1eee3;   /* jade ~30% */
   --col-neu:       #f5f7f8;   /* niemal białe */
@@ -105,7 +106,7 @@ header {
 
 /* ============ Grid ============ */
 #grid-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 9px; overflow: auto; box-shadow: 0 1px 2px rgba(15,30,40,.03); }
-table#grid { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 1180px; table-layout: fixed; }
+table#grid { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 1800px; table-layout: fixed; }
 table#grid th, table#grid td {
   border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
   vertical-align: top; padding: 0; text-align: left; overflow: hidden;
@@ -120,16 +121,17 @@ table#grid tr:last-child td { border-bottom: none; }
 table#grid th:last-child, table#grid td:last-child { border-right: none; }
 
 /* SZEROKOŚCI KOLUMN
-   OBECNI zmniejszona do 160px (połowa poprzedniego), WYDAWANIE +30% do 230px.
-   Całość zwarta, mieści się na typowym laptopie. */
-.col-day   { width: 54px; }
-.col-wp    { width: 180px; }
-.col-shift-am { width: 200px; }
-.col-shift-pm { width: 200px; }
-table#grid th:nth-child(5) { width: 160px; }   /* OBECNI */
-table#grid th:nth-child(6) { width: 230px; }   /* WYDAWANIE */
-table#grid th:nth-child(7) { width: 120px; }   /* Odbiory */
-table#grid th:nth-child(8) { width: 120px; }   /* Urlopy */
+   WP / Poranek / Popo szerokie żeby pomieścić 4 osoby w jednej linii.
+   Makrodyżur (nowa kolumna) węższy, OBECNI 160, WYDAWANIE 230, Odbiory/Urlopy 120. */
+.col-day   { width: 50px; }
+.col-wp    { width: 340px; }
+.col-shift-am { width: 340px; }
+.col-shift-pm { width: 340px; }
+.col-makro { width: 180px; }                   /* MAKRODYŻUR */
+table#grid th:nth-child(6) { width: 160px; }   /* OBECNI */
+table#grid th:nth-child(7) { width: 230px; }   /* WYDAWANIE */
+table#grid th:nth-child(8) { width: 120px; }   /* Odbiory */
+table#grid th:nth-child(9) { width: 120px; }   /* Urlopy */
 
 table#grid td.cell { padding: 4px 6px; cursor: pointer; min-height: 40px; transition: filter .1s; }
 table#grid td.cell:hover { filter: brightness(0.97); }
@@ -137,6 +139,7 @@ table#grid td.cell:hover { filter: brightness(0.97); }
 table#grid td.col-c-wp        { background: var(--col-wp); }
 table#grid td.col-c-am        { background: var(--col-am); }
 table#grid td.col-c-pm        { background: var(--col-pm); }
+table#grid td.col-c-makro     { background: var(--col-makro); }
 table#grid td.col-c-obecni    { background: var(--col-jade); }
 table#grid td.col-c-wydawanie { background: var(--col-wyd); }
 table#grid td.col-c-odbiory   { background: var(--col-neu); }
@@ -155,22 +158,24 @@ table#grid tr.today td:last-child  { box-shadow: inset -2px 2px 0 var(--today-ri
 }
 .cell-day .dow { font-size: 9px; font-weight: 700; color: var(--muted-2); text-transform: uppercase; letter-spacing: 0.06em; }
 
-/* ============ Pille ============ */
+/* ============ Pille ============
+   Kompaktowe, żeby 4 osoby zmieściły się w jednej linii w kolumnie ~340px.
+   Średnio pill = ~78px ("8-16·Krawiel"), 4× = 312px + odstępy ~24px = 336px. */
 .pill {
-  display: inline-flex; align-items: center; gap: 4px;
-  padding: 3px 7px; border-radius: 6px; font-size: 12px; line-height: 1.25;
-  background: rgba(255,255,255,0.7); border: 1px solid rgba(15,30,40,0.08); color: var(--text);
-  margin: 1px 2px; font-weight: 600; white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 3px;
+  padding: 2px 5px; border-radius: 5px; font-size: 11px; line-height: 1.2;
+  background: rgba(255,255,255,0.78); border: 1px solid rgba(15,30,40,0.08); color: var(--text);
+  margin: 1px 1px; font-weight: 600; white-space: nowrap;
 }
-.pill .hrs { font-variant-numeric: tabular-nums; color: var(--accent); font-size: 11px; font-weight: 700; }
-.pill .sep { color: var(--muted-2); opacity: 0.5; }
+.pill .hrs { font-variant-numeric: tabular-nums; color: var(--accent); font-size: 10px; font-weight: 800; }
+.pill .sep { color: var(--muted-2); opacity: 0.45; }
 .pill .label {
-  font-size: 9px; font-weight: 800; color: var(--muted); text-transform: uppercase;
-  margin-right: 3px; letter-spacing: 0.06em;
+  font-size: 8px; font-weight: 800; color: var(--muted); text-transform: uppercase;
+  margin-right: 2px; letter-spacing: 0.05em;
 }
-.pill-person { font-size: 12px; }
+.pill-person { font-size: 11px; }
 .pill-dup { background: #fde0e0; border-color: #f4a5a5; color: #9b1d1d; }
-.pill-dup::before { content: '⚠'; font-size: 10px; margin-right: 1px; }
+.pill-dup::before { content: '⚠'; font-size: 9px; margin-right: 1px; }
 
 /* WYDAWANIE = stack pionowy */
 .wyd-row { display: flex; align-items: center; gap: 4px; padding: 2px 4px; }
