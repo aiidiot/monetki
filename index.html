@@ -16,8 +16,7 @@
     <button class="tab" data-tab="redakcja">Redakcja</button>
   </nav>
   <div class="controls">
-    <span id="status" class="status status-offline">local</span>
-    <button id="settings-btn" title="Konfiguracja Firebase">⚙</button>
+    <span id="status" class="status status-local">łączę...</span>
   </div>
 </header>
 
@@ -29,11 +28,6 @@
     <button id="next-month" class="nav-btn" title="Następny miesiąc">▶</button>
     <button id="today-btn" class="nav-btn nav-btn-today" title="Skocz do dziś">dziś</button>
     <button id="copy-prev-btn" class="nav-btn nav-btn-copy" title="Skopiuj grafik z poprzedniego miesiąca, z zachowaniem dni tygodnia">📋 Kopiuj z poprzedniego</button>
-    <div class="month-actions">
-      <button id="export-btn" title="Pobierz wszystko jako JSON">⬇ JSON</button>
-      <button id="import-btn" title="Wczytaj JSON">⬆ JSON</button>
-      <input type="file" id="import-file" accept=".json" hidden>
-    </div>
   </div>
 
   <div id="grid-wrap">
@@ -82,30 +76,6 @@
       <button value="cancel">Anuluj</button>
       <button value="clear" class="ghost-danger">Wyczyść komórkę</button>
       <button value="save" id="cell-save" class="primary">Zapisz</button>
-    </div>
-  </form>
-</dialog>
-
-<!-- =========================== DIALOG: Firebase config =========================== -->
-<dialog id="settings-dialog">
-  <form method="dialog">
-    <h2>Konfiguracja Firebase (real-time sync)</h2>
-    <p class="hint">
-      Wklej config swojego projektu Firebase Realtime DB (Console → Project Settings → Web App).
-      Bez tego dane lecą tylko do localStorage tej przeglądarki.
-    </p>
-    <label>databaseURL:
-      <input type="url" id="fb-url" placeholder="https://twoj-projekt-default-rtdb.europe-west1.firebasedatabase.app">
-    </label>
-    <label>apiKey:
-      <input type="text" id="fb-apikey" placeholder="AIzaSy...">
-    </label>
-    <label>projectId:
-      <input type="text" id="fb-projectid" placeholder="twoj-projekt">
-    </label>
-    <div class="actions">
-      <button value="cancel">Anuluj</button>
-      <button value="save" id="fb-save" class="primary">Zapisz i połącz</button>
     </div>
   </form>
 </dialog>

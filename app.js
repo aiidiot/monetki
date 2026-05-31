@@ -1,6 +1,16 @@
-// Grafik redakcji — vanilla JS SPA + opcjonalny Firebase Realtime DB
+// Grafik redakcji — vanilla JS SPA + Firebase Realtime DB (hardcoded config)
 // Dwie zakładki: Grafik (siatka miesiąc) i Redakcja (osoby + role)
 // Zero wpisywania w komórkach: wszystko z dropdownów (osoba + godziny z presetu).
+//
+// Każdy z linkiem automatycznie łączy się z bazą — bez logowania, bez konfiguracji.
+// API key meant-to-be-public (Firebase pattern); bezpieczeństwo na poziomie Rules.
+
+const FIREBASE_CONFIG = {
+  apiKey:      "AIzaSyBOmMx_OuB-w3EbMCxxOKg3HkMW4Lxj7HE",
+  authDomain:  "monetki-eea78.firebaseapp.com",
+  databaseURL: "https://monetki-eea78-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId:   "monetki-eea78",
+};
 
 // ============ Stałe ============
 const MONTHS_PL = ['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień'];
@@ -59,7 +69,6 @@ const state = {
   suppressRemote: false,
 };
 
-const LS_FB = 'monetki.firebaseConfig';
 const LS_REDAKCJA = 'monetki.redakcja';
 const LS_GRAFIK   = 'monetki.grafik';
 
@@ -97,33 +106,22 @@ function saveLocal() {
   try { localStorage.setItem(LS_GRAFIK,   JSON.stringify(state.grafik));   } catch(e){}
 }
 
-async function bootstrapInitial() {
-  if (state.redakcja.length > 0) return;
-  try {
-    const r = await fetch('data-initial.json', { cache: 'no-cache' });
-    if (!r.ok) return;
-    const parsed = await r.json();
-    state.redakcja = parsed.redakcja || [];
-    state.grafik   = parsed.grafik   || {};
-    saveLocal();
-  } catch(e) { console.warn('bootstrap failed', e); }
-}
+// Bootstrap usunięty — dane przychodzą z Firebase automatycznie.
+// localStorage służy tylko jako offline cache między sesjami.
 
-// ============ Firebase (opcjonalnie) ============
+// ============ Firebase (auto-connect dla każdego z linkiem) ============
 async function tryInitFirebase() {
-  let cfg;
-  try { cfg = JSON.parse(localStorage.getItem(LS_FB) || 'null'); } catch(e){ cfg=null; }
-  if (!cfg || !cfg.databaseURL) { setStatus('local','local'); return; }
+  setStatus('local','łączę...');
   try {
     const [{ initializeApp }, dbMod] = await Promise.all([
       import('https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js'),
       import('https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js'),
     ]);
-    const app = initializeApp(cfg);
+    const app = initializeApp(FIREBASE_CONFIG);
     state.fbDb  = dbMod.getDatabase(app);
     state.fbApi = dbMod;
     state.fbReady = true;
-    setStatus('online', 'online: '+(cfg.projectId||'fb'));
+    setStatus('online', 'online');
 
     // Subskrybuj redakcja + grafik
     dbMod.onValue(dbMod.ref(state.fbDb, 'redakcja'), snap => {
@@ -595,55 +593,9 @@ function updateCopyPrevLabel() {
   if (btn) btn.textContent = `📋 Kopiuj z ${MONTHS_PL[srcM]}`;
 }
 
-// ============ Import / Export ============
-$('#export-btn').onclick = () => {
-  const out = { exportedAt: new Date().toISOString(), redakcja: state.redakcja, grafik: state.grafik };
-  const blob = new Blob([JSON.stringify(out, null, 2)], {type:'application/json'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `grafik-${state.year}-${pad2(state.monthIdx+1)}.json`;
-  a.click(); URL.revokeObjectURL(a.href);
-};
-$('#import-btn').onclick = () => $('#import-file').click();
-$('#import-file').onchange = async e => {
-  const f = e.target.files[0]; if (!f) return;
-  const parsed = JSON.parse(await f.text());
-  if (parsed.redakcja) state.redakcja = parsed.redakcja;
-  if (parsed.grafik)   state.grafik   = parsed.grafik;
-  saveLocal();
-  if (state.fbReady) {
-    pushFirebase('redakcja', state.redakcja);
-    pushFirebase('grafik',   state.grafik);
-  }
-  renderGrafik(); renderRedakcja();
-};
-
-// ============ Firebase config dialog ============
-$('#settings-btn').onclick = () => {
-  let cfg = {};
-  try { cfg = JSON.parse(localStorage.getItem(LS_FB) || '{}'); } catch(e){}
-  $('#fb-url').value = cfg.databaseURL || '';
-  $('#fb-apikey').value = cfg.apiKey || '';
-  $('#fb-projectid').value = cfg.projectId || '';
-  $('#settings-dialog').showModal();
-};
-$('#settings-dialog').addEventListener('close', e => {
-  if (e.target.returnValue !== 'save') return;
-  const cfg = {
-    databaseURL: $('#fb-url').value.trim(),
-    apiKey:      $('#fb-apikey').value.trim(),
-    projectId:   $('#fb-projectid').value.trim(),
-    authDomain:  $('#fb-projectid').value.trim() + '.firebaseapp.com',
-  };
-  if (!cfg.databaseURL || !cfg.apiKey || !cfg.projectId) { alert('Wymagane wszystkie 3 pola.'); return; }
-  localStorage.setItem(LS_FB, JSON.stringify(cfg));
-  location.reload();
-});
-
 // ============ Boot ============
 (async function main() {
   loadLocal();
-  await bootstrapInitial();
   renderGrafik();
   renderRedakcja();
   await tryInitFirebase();
