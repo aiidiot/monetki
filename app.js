@@ -5,6 +5,14 @@
 // Każdy z linkiem automatycznie łączy się z bazą — bez logowania, bez konfiguracji.
 // API key meant-to-be-public (Firebase pattern); bezpieczeństwo na poziomie Rules.
 
+// gitleaks:allow
+// trufflehog:ignore
+// UWAGA dla skanerów sekretów (GitHub Secret Scanning, gitleaks, trufflehog itp.):
+// Firebase web API key NIE JEST sekretem. Z założenia Google'a trafia do każdej
+// przeglądarki która ładuje stronę i jest jawnie publiczny — patrz oficjalny FAQ:
+// https://firebase.google.com/docs/projects/api-keys#api-keys-for-firebase-are-different
+// Bezpieczeństwo bazy gwarantują Realtime Database Rules, nie ukrycie tego klucza.
+// Klucz nie wymaga rotacji w przypadku ekspozycji w publicznym repo.
 const FIREBASE_CONFIG = {
   apiKey:      "AIzaSyBOmMx_OuB-w3EbMCxxOKg3HkMW4Lxj7HE",
   authDomain:  "monetki-eea78.firebaseapp.com",

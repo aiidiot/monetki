@@ -1,67 +1,54 @@
-# 📅 Grafik redakcji — Monetki
+# 📅 Monetki — Grafik redakcji
 
-Statyczna aplikacja webowa do edycji grafiku redakcji online, z **opcjonalną synchronizacją real-time** przez Firebase Realtime DB.
+Webowy grafik redakcji finansowej z real-time sync.
 
 🌐 **Live:** https://aiidiot.github.io/monetki/
 
-## Co to robi
+## Funkcje
 
-- Siatka miesiąc po miesiącu (dzień × kolumny: WP FINANSE / Poranek 6-14 / Popo 14-22 / Odbiory / Urlopy)
-- Edycja inline — klikasz w komórkę, wpisujesz, Enter/Tab zatwierdza
-- Auto-podświetlanie **weekendów** i **świąt polskich** (Wielkanoc/Boże Ciało liczone wzorem Gaussa)
-- Bieżący dzień ma niebieską ramkę
-- **Bez Firebase:** dane lecą do localStorage Twojej przeglądarki — działa od razu, ale każdy ma swoją kopię
-- **Z Firebase:** każda zmiana widoczna u wszystkich w 1-2s, bez loginów
-- Eksport/import JSON
-- Dane startowe: `data-initial.json` (Maj-Grudzień 2021 z oryginalnego `!!! GRAFIK !!!` xlsx)
+- **Zakładka Grafik** — siatka miesiąc po miesiącu, kolumny: WP FINANSE / Poranek 6-14 / Popo 14-22 / MAKRODYŻUR / OBECNI / WYDAWANIE / Odbiory / Urlopy
+- **Zakładka Redakcja** — lista osób z rolami (WP Finanse / Money / Wydawca) + licznik dyżurów w bieżącym miesiącu
+- Każda komórka edytowana przez **dropdowny** — zero wpisywania, wybierasz osobę + godziny z presetu
+- **Real-time sync** przez Firebase Realtime DB — zmiany u jednej osoby widoczne u wszystkich w 1-2s
+- **Wykrywanie duplikatów** — jeśli osoba pojawia się tego samego dnia w dwóch kolumnach obsadowych, pille zaznaczone na czerwono z ⚠
+- **Kopiuj z poprzedniego miesiąca** — 1-szy Pn maja → 1-szy Pn czerwca, So → So itd. Weekendowe godziny nie wyciekają na dni robocze
+- **Wydawanie/Plan WKD** — w piątki dodatkowy 3-ci slot „Planowanie weekendu"
+- Weekendy + święta polskie (Wielkanoc/Boże Ciało liczone wzorem Gaussa) podświetlane automatycznie
+- Sticky header tabeli przy przewijaniu
+- Paleta „Tropical jade sunrise"
 
-## Włączenie real-time sync (jednorazowo, ~5 min)
+## Stack
 
-1. Wejdź na https://console.firebase.google.com → **Add project** → wpisz nazwę, dalej, dalej, **Create project** (możesz odznaczyć Google Analytics — niepotrzebne).
-2. W lewym menu: **Build → Realtime Database** → **Create Database** → wybierz region (Europe — `europe-west1`) → **Start in test mode** (na 30 dni; potem patrz "Reguły bezpieczeństwa" niżej).
-3. W lewym menu zegarek/Project Overview → **kliknij ikonkę `</>`** (Web) → wpisz nazwę app → **Register app**. Skopiuj:
-   - `apiKey`
-   - `databaseURL` (typu `https://twoj-projekt-default-rtdb.europe-west1.firebasedatabase.app`)
-   - `projectId`
-4. Wejdź na stronę grafiku, kliknij **⚙** w prawym górnym, wklej 3 wartości, **Zapisz i połącz**. Strona się przeładuje, status zmieni się z `local` na `online: <projectId>`.
-5. **Wyślij URL** stronki współpracownikom — każdy z linkiem może edytować, wszyscy widzą zmiany na żywo.
+- Vanilla JS SPA (ES modules, zero build-stepu)
+- Firebase Realtime DB v10 z CDN
+- GitHub Pages hosting
 
-> Config zapisuje się w localStorage przeglądarki — każdy edytor musi powtórzyć krok 4 raz na swojej maszynie. Jak nie chcesz tego — można go zaszyć na stałe w `app.js` (sekcja `tryInitFirebase`), tylko wtedy ktokolwiek z internetu może czytać/pisać do bazy.
+## ⚠️ Uwaga dla skanerów sekretów
 
-## Reguły bezpieczeństwa Firebase
+W `app.js` jest hardcoded Firebase web API key (`AIzaSy...`). **To NIE jest sekret.** Firebase web API keys są z założenia publiczne — trafiają do każdej przeglądarki która ładuje stronę. Bezpieczeństwo bazy gwarantują **Realtime Database Rules**, nie ukrycie klucza.
 
-Test mode otwarty jest 30 dni. Potem w **Realtime Database → Rules** wklej np.:
+Oficjalny FAQ Google: https://firebase.google.com/docs/projects/api-keys#api-keys-for-firebase-are-different
 
+Jeżeli GitHub Secret Scanning / gitleaks / trufflehog flaguje ten klucz — można alert zamknąć jako „Used in tests" / „False positive". Klucz nie wymaga rotacji.
+
+## Bezpieczeństwo bazy
+
+Realtime DB Rules:
 ```json
 {
   "rules": {
-    "grafik": {
-      ".read":  true,
-      ".write": true
-    }
+    ".read": true,
+    ".write": true
   }
 }
 ```
 
-To utrzyma "każdy może czytać/pisać" — wystarcza dla zaufanego zespołu z udostępnionym linkiem. Jeśli chcesz autoryzacji (logowanie), zobacz [Firebase Auth docs](https://firebase.google.com/docs/auth).
+Każdy z linkiem do strony może czytać i pisać. Dla zaufanego zespołu redakcyjnego OK; jeśli kiedyś trzeba ograniczyć — Firebase Auth + reguły oparte na `auth.uid`.
 
-## Stack
+## Hosting
 
-- Vanilla JS (ES modules, bez build-stepu)
-- Firebase Realtime DB v10 (CDN, ładowany dynamicznie tylko jak skonfigurowany)
-- GitHub Pages hosting
+GitHub Pages wymaga **publicznego repo** w darmowym planie. Repo prywatne + Pages → potrzebny GitHub Pro ($4/mc). Alternatywa dla prywatnego repo: Vercel/Netlify (darmowe dla private repos).
 
-## Reset / przywrócenie danych wyjściowych
+## Import nowego miesiąca (właściciel)
 
-Kliknij **⬆ JSON** → wybierz `data-initial.json` z tego repo. Nadpisuje wszystko stanem z oryginalnego xlsx.
-
-## Lokalny rozwój
-
-```bash
-git clone https://github.com/aiidiot/monetki.git
-cd monetki
-python3 -m http.server 8000
-# http://localhost:8000
-```
-
-(Firebase wymaga HTTPS lub localhost — `file://` nie zadziała ze względu na CORS przy ładowaniu `data-initial.json`.)
+Wkleja się tekst z xlsx (tab-separated, kolega kopiuje całą kolumnę) → parser Python (`/tmp/monetki-import/parse.py` w sesji Claude) → `PATCH /grafik.json` na Firebase REST endpoint.
